@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col-xs-12">
+        <form #f="ngForm" novalidate>
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="name" class="form-control" required [(ngModel)]="user.name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="email" class="form-control" required [(ngModel)]="user.email">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password1" class="form-control" required [(ngModel)]="user.password">
+          </div>
+          <div class="form-group">
+            <label>Ripeti password</label>
+            <input type="password" name="password2" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Indirizzo</label>
+            <input type="text" name="indirizzo" class="form-control" required [(ngModel)]="user.address">
+          </div>
+          <div class="form-group">
+            <label>Citta</label>
+            <input type="text" name="citta" class="form-control" required [(ngModel)]="user.city">
+          </div>
+          <div class="form-group">
+            <label>CAP</label>
+            <input type="text" name="cap" class="form-control" required [(ngModel)]="user.zipCode">
+          </div>
+          <div class="form-group">
+            <label>Telefono</label>
+            <input type="text" name="telefono" class="form-control" required [(ngModel)]="user.phone">
+          </div>
+          <div class="form-group">
+            <label>Tipo</label>
+            <select class="form-control" name="tipo" required [(ngModel)]="user.type">
+              <option value="" disabled>Seleziona</option>
+              <option value="1">Gruppo</option>
+              <option value="2">Locale</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="button" name="registerAction" class="btn btn-default" (click)="check()">Registrati</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
