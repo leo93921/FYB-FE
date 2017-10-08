@@ -3,3 +3,7 @@
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>
+
+<div class="overlay" *ngIf="_customHttp.pendingRequest">
+  <app-loading-display style="display: table; height: 100%; width: 100%"></app-loading-display>
+</div>
