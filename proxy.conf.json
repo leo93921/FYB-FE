@@ -1,5 +1,5 @@
 {
-  "/api": {
+  "/FYB_BE/api": {
     "target": "http://localhost:8080",
     "secure": false
   }
