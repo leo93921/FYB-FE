@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CustomHttpService } from './service/custom-http.service';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { CustomHttpService } from './service/custom-http.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(public _customHttp: CustomHttpService) {}
+  constructor(public _customHttp: Http) {}
 }

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UtilsService {
-
-  constructor(private _http: Http) { }
+  constructor(private _http: Http) {}
 
   public getCoordinates(address: string): Observable<any> {
     const API_KEY = 'AIzaSyBY5EbiFluVUsnqhAl4qsmhAIG09XiepbI';
