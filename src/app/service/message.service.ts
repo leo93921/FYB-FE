@@ -5,6 +5,11 @@ import { ToastData, ToastOptions, ToastyService } from 'ng2-toasty';
 export class MessageService {
   constructor(private _toastyService: ToastyService) {}
 
+  public showSuccess(title: string, text: string) {
+    const toastOptions = this.getMessage(title, text);
+    this._toastyService.success(toastOptions);
+  }
+
   public showError(title: string, text: string) {
     const toastOptions = this.getMessage(title, text);
     this._toastyService.error(toastOptions);
