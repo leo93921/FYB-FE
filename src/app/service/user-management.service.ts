@@ -10,7 +10,7 @@ export class UserManagementService {
 
   public login(username: string, password: string): Observable<any> {
     const url = `${Constants.API_BASE}user/login?u=${username}&p=${password}`;
-    return this._http.get(url).map(res => res.text());
+    return this._http.get(url).map(res => res.json());
   }
 
   public register(user: User): Observable<any> {
