@@ -9,15 +9,15 @@
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" name="email" class="form-control" required [(ngModel)]="user.email">
+            <input type="text" name="email" class="form-control" required [(ngModel)]="user.email" email>
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password1" class="form-control" required [(ngModel)]="user.password">
+            <input type="password" name="password1" class="form-control" required [(ngModel)]="user.password" (ngModelChange)="checkPasswordValidity()">
           </div>
           <div class="form-group">
             <label>Ripeti password</label>
-            <input type="password" name="password2" class="form-control" required>
+            <input type="password" name="password2" class="form-control" required [(ngModel)]="secondPassword" (ngModelChange)="checkPasswordValidity()">
           </div>
           <div class="form-group">
             <label>Indirizzo</label>
@@ -44,7 +44,7 @@
             </select>
           </div>
           <div class="form-group">
-            <button type="button" name="registerAction" class="btn btn-default" (click)="check()">Registrati</button>
+            <button type="button" name="registerAction" class="btn btn-default" (click)="registerUser()" [disabled]="f.invalid || invalidPassword">Registrati</button>
           </div>
         </form>
       </div>
