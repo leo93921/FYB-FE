@@ -5,6 +5,7 @@ import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { RoutingModule } from './routing.module';
 import { ToastyModule, ToastyService } from 'ng2-toasty';
+import { BsModalModule } from 'ng2-bs3-modal';
 
 import { CustomHttpService } from './service/custom-http.service';
 import { HttpFactory } from './http-factory';
@@ -35,7 +36,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     FormsModule,
     HttpModule,
     CarouselModule.forRoot(),
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+    BsModalModule
   ],
   providers: [
     {
