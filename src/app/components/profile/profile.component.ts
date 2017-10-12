@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { MediaContainer } from '../../model/media-container';
+import { Messages } from '../../model/messages';
 import { MediaManagementService } from '../../service/media-management.service';
 import { DomainService } from '../../service/domain.service';
 import { UserManagementService } from '../../service/user-management.service';
@@ -29,10 +30,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private mediaContainer: MediaContainer = new MediaContainer();
   public fileNotSelected = true;
   public fileName: string;
+  private file: any;
   @ViewChild(BsModalComponent) private modal: BsModalComponent;
-
+  public addImage: boolean = false;
   public domains: any[] = [];
   public tracks: any[] = [];
+  public images: any[] = [];
   private subscriptions: Subscription[] = [];
 
   constructor(
@@ -51,6 +54,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.userId = params['userId'];
         this.refreshGenericData();
         this.refreshTracks();
+        this.refreshImages();
         return this._domainService.getDomain('price_band');
       })
       .subscribe(res => {
@@ -74,6 +78,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
       });
   }
 
+  private refreshImages() {
+    this.subscriptions[4] = this._mediaManagement
+      .getMedia(this.userId, Constants.IMAGE_FILES)
+      .subscribe(res => {
+        this.images = res;
+      });
+  }
+
   private refreshTracks() {
     this.subscriptions[0] = this._mediaManagement
       .getMedia(this.userId, Constants.AUDIO_FILES)
@@ -87,12 +99,20 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .zipCode}`;
     this.subscriptions[3] = this._utils
       .getCoordinates(address)
-      .subscribe(res => {
-        console.log(res);
-      });
-    this._userManager
-      .saveGenericData(this.userId, this.user)
-      .subscribe(res => {});
+      .switchMap(res => {
+        if (res.status === Constants.GOOGLE_COORD_NO_RESULTS) {
+          this._messageService.showError(
+            Messages.GOOGLE_NO_COORD_RESULTS_TITLE,
+            Messages.GOOGLE_NO_COORD_RESULTS_MESSAGE
+          );
+          return;
+        }
+        this.user.ltd = res.results[0]['geometry']['location']['lat'];
+        this.user.lng = res.results[0]['geometry']['location']['lng'];
+        this.user.formattedAddress = res.results[0]['formatted_address'];
+        return this._userManager.saveGenericData(this.userId, this.user);
+      })
+      .subscribe(() => {});
   }
 
   public saveMedia(): void {
@@ -107,17 +127,29 @@ export class ProfileComponent implements OnInit, OnDestroy {
           );
         }
         this.modal.dismiss();
-        this.refreshTracks();
+        this.mediaContainer.title = '';
+        this.mediaContainer.userId = this.userId;
+        this.fileName = '';
+        this.fileNotSelected = true;
+        if (this.addImage) {
+          this.refreshImages();
+        } else {
+          this.refreshTracks();
+        }
       });
   }
 
   public selectMedia(event): void {
-    const file: File = event.srcElement.files[0];
-    this.mediaContainer.mimeType = file.type;
-    this.mediaContainer.size = file.size;
-    this.mediaContainer.media = file;
-    this.fileName = file.name;
-    this.fileNotSelected = false;
+    if (event.srcElement.files && event.srcElement.files.length > 0) {
+      this.file = event.srcElement.files[0];
+      this.fileName = this.file.name;
+      this.mediaContainer.mimeType = this.file.type;
+      this.mediaContainer.size = this.file.size;
+      this.mediaContainer.media = this.file;
+      this.fileNotSelected = false;
+    } else {
+      this.fileNotSelected = true;
+    }
   }
 
   public getTime(time: number): string {
@@ -126,9 +158,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     return `${minutes}:${seconds}`;
   }
 
-  public deleteMedia(mediaId: string) {
+  public deleteMedia(mediaId: string, isImage: boolean) {
     this._mediaManagement.deleteMedia(mediaId).subscribe(res => {
-      this.refreshTracks();
+      if (isImage) {
+        this.refreshImages();
+      } else {
+        this.refreshTracks();
+      }
     });
   }
 }
@@ -144,4 +180,7 @@ export class UserProfile {
   city: string;
   zipCode: string;
   youtube: string;
+  formattedAddress: string;
+  ltd: string;
+  lng: string;
 }
