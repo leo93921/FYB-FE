@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { MediaContainer } from '../../model/media-container';
 import { MediaManagementService } from '../../service/media-management.service';
+import { DomainService } from '../../service/domain.service';
 import { UserManagementService } from '../../service/user-management.service';
 import { UtilsService } from '../../service/utils.service';
 import { MessageService } from '../../service/message.service';
@@ -17,7 +18,8 @@ import { BsModalComponent } from 'ng2-bs3-modal';
     MediaManagementService,
     MessageService,
     UserManagementService,
-    UtilsService
+    UtilsService,
+    DomainService
   ]
 })
 export class ProfileComponent implements OnInit, OnDestroy {
@@ -29,6 +31,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public fileName: string;
   @ViewChild(BsModalComponent) private modal: BsModalComponent;
 
+  public domains: any[] = [];
   public tracks: any[] = [];
   private subscriptions: Subscription[] = [];
 
@@ -37,16 +40,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private _mediaManagement: MediaManagementService,
     private _messageService: MessageService,
     private _userManager: UserManagementService,
-    private _utils: UtilsService
+    private _utils: UtilsService,
+    private _domainService: DomainService
   ) {}
 
   ngOnInit() {
-    this._activatedRoute.params.subscribe((params: Params) => {
-      this.mediaContainer.userId = params['userId'];
-      this.userId = params['userId'];
-      this.refreshGenericData();
-      this.refreshTracks();
-    });
+    this._activatedRoute.params
+      .switchMap((params: Params) => {
+        this.mediaContainer.userId = params['userId'];
+        this.userId = params['userId'];
+        this.refreshGenericData();
+        this.refreshTracks();
+        return this._domainService.getDomain('price_band');
+      })
+      .subscribe(res => {
+        this.domains = res;
+      });
   }
 
   ngOnDestroy() {
