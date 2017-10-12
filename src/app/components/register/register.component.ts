@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../model/user';
+import { Constants } from '../../constants';
+import { Messages } from '../../model/messages';
 import { UtilsService } from '../../service/utils.service';
 import { UserManagementService } from '../../service/user-management.service';
 import { MessageService } from '../../service/message.service';
@@ -34,6 +36,13 @@ export class RegisterComponent implements OnInit {
     this._utils
       .getCoordinates(address)
       .switchMap(res => {
+        if (res.status === Constants.GOOGLE_COORD_NO_RESULTS) {
+          this._messageService.showError(
+            Messages.GOOGLE_NO_COORD_RESULTS_TITLE,
+            Messages.GOOGLE_NO_COORD_RESULTS_MESSAGE
+          );
+          return;
+        }
         this.user.ltd = res.results[0]['geometry']['location']['lat'];
         this.user.lng = res.results[0]['geometry']['location']['lng'];
         this.user.formattedAddress = res.results[0]['formatted_address'];
