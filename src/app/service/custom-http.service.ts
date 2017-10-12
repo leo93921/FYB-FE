@@ -38,15 +38,39 @@ export class CustomHttpService extends Http {
     });
   }
 
+  public put(
+    url: string,
+    payload: any,
+    options?: RequestOptionsArgs
+  ): Observable<any> {
+    this.incrementRequests();
+    return super.put(url, payload, options).switchMap(res => {
+      this.decrementRequests();
+      return Observable.of(res);
+    });
+  }
+
+  public delete(url: string, options?: RequestOptionsArgs): Observable<any> {
+    this.incrementRequests();
+    return super.delete(url, options).switchMap(res => {
+      this.decrementRequests();
+      return Observable.of(res);
+    });
+  }
+
   private incrementRequests(): void {
     this.pendingRequestNumber++;
-    this.pendingRequest = true;
+    setTimeout(() => {
+      this.pendingRequest = true;
+    }, 0);
   }
 
   private decrementRequests(): void {
     this.pendingRequestNumber--;
-    if (this.pendingRequestNumber === 0) {
-      this.pendingRequest = false;
-    }
+    setTimeout(() => {
+      if (this.pendingRequestNumber === 0) {
+        this.pendingRequest = false;
+      }
+    }, 0);
   }
 }

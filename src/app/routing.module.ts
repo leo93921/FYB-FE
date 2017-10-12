@@ -10,7 +10,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'event', component: EventComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile/:userId', component: ProfileComponent }
 ];
 
 @NgModule({
