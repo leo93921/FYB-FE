@@ -18,6 +18,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { EventComponent } from './components/event/event.component';
 import { LoadingDisplayComponent } from './components/shared/loading-display/loading-display.component';
 import { ProfileComponent } from './components/profile/profile.component';
+// import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { Ng2AudioPlayerComponent } from './components/shared/ng2-audio-player/ng2-audio-player.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     EventComponent,
     LoadingDisplayComponent,
-    ProfileComponent
+    ProfileComponent,
+    // UserProfileComponent,
+    Ng2AudioPlayerComponent
   ],
   imports: [
     BrowserModule,
