@@ -1,0 +1,92 @@
+<carousel>
+  <slide>
+    <img src="assets/people-eiffel-tower-lights-night.jpg" alt="First slide">
+    <ng-template *ngTemplateOutlet="user_info"></ng-template>
+  </slide>
+  <slide>
+    <img src="assets/pexels-photo-173523.jpg" alt="Third slide">
+    <ng-template *ngTemplateOutlet="user_info"></ng-template>
+  </slide>
+</carousel>
+
+<ng-template #user_info>
+  <div class="carousel-caption">
+    <h3>Nome utente</h3>
+    <p><i class="fa fa-phone" aria-hidden="true"></i> 0123 34352<span class="seperate-h"></span><!-- {% if utente.tipo is constant('AppBundle\\Entity\\UserType::GRUPPO')  %} --><i class="fa fa-usd" aria-hidden="true"></i> 1 - 100 €</p>
+
+    <!-- {% if feedback.voto is not null %} -->
+    <p><i class="fa fa-comment-o" aria-hidden="true"></i> 3.97<span class="seperate-h"></span><i class="fa fa-users" aria-hidden="true"></i> 98</p>
+    <!-- form comunicazione -->
+    <!-- {% if ingaggiabile == true %} -->
+    <button type="button" class="btn btn-success btn-outline btn-engage">Ingaggia</button>
+  </div>
+</ng-template>
+
+<!--Eventi-->
+<div class="section margin-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <img src="/assets/booking.jpg" class="img-responsive">
+            </div>
+            <div class="col-md-4">
+                <ul class="media-list text-left">
+                    <ng-container *ngFor="let evento of [{giorno: '11', mese: 'JAN', nome: 'Nome evento', descrizione: 'Una descrizione' }]">
+                        <li class="media">
+                            <div class="media-left media-middle">
+                                <a class="link-event-date">
+                                    <div class="media-object event-date">
+                                        <div class="event-day">
+                                            {{ evento.giorno }}
+                                        </div>
+                                        <div class="event-month">
+                                            {{ evento.mese }}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="media-body media-middle">
+                                <h4 class="media-heading">{{ evento.nome }}</h4>
+                                <p>{{ evento.descrizione }}</p>
+                                <div class="col-md-12 text-right">
+                                    <a class="btn btn-danger">Vedi <i class="fa fa-fw fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                      </ng-container>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fine Eventi-->
+
+
+
+
+<div class="section margin-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-xs-12">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_MD8IK19aec" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-12">
+        <app-ng2-audio-player></app-ng2-audio-player>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section margin-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              <div class="bg-info">
+
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
