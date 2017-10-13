@@ -26,7 +26,7 @@
   position: relative;
   z-index: 5;
   width: 100%;
-  padding: 18px 0;
+  padding: 0 0 18px 0;
 }
 
 .player_body {
@@ -36,8 +36,9 @@
   bottom: 0;
   left: 0;
   overflow: hidden;
-  width: 275px;
-  height: 490px;
+  width: 100%;
+  max-width: 275px;
+  height: 476px;
   margin: auto;
   background: rgba(255, 255, 255, 1);
   box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.15),
