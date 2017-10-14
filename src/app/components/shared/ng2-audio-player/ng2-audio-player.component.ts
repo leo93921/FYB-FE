@@ -4,8 +4,10 @@ import {
   ViewChild,
   Renderer2,
   EventEmitter,
-  AfterContentInit,
-  OnDestroy
+  OnChanges,
+  SimpleChanges,
+  OnDestroy,
+  Input
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -14,8 +16,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './ng2-audio-player.component.html',
   styleUrls: ['./ng2-audio-player.component.css']
 })
-export class Ng2AudioPlayerComponent
-  implements OnInit, AfterContentInit, OnDestroy {
+export class Ng2AudioPlayerComponent implements OnInit, OnChanges, OnDestroy {
   public displayPlaylist: boolean = false;
   public isPlaying: boolean = false;
   private audioDuration: number;
@@ -33,53 +34,13 @@ export class Ng2AudioPlayerComponent
   private loadEnd: EventEmitter<void> = new EventEmitter<void>();
   private canPlay: EventEmitter<void> = new EventEmitter<void>();
 
-  // start test variables
-  public playList: PlayListItem[] = [
-    {
-      icon: 'http://funkyimg.com/i/21pX5.png',
-      title: 'Hitman',
-      file:
-        'http://incompetech.com/music/royalty-free/mp3-royaltyfree/Hitman.mp3',
-      artist: 'An artist'
-    },
-    {
-      icon: 'http://funkyimg.com/i/21pX5.png',
-      title: 'Forever Believe',
-      file:
-        'http://www.naijalumia.com/wp-content/uploads/2017/10/Pink_-_Revenge_Ft_Eminem(NaijaLumia.com).mp3',
-      artist: 'An artist'
-    },
-    {
-      icon: 'http://funkyimg.com/i/21pX5.png',
-      title: 'Drifting',
-      file:
-        'http://incompetech.com/music/royalty-free/mp3-royaltyfree/Hitman.mp3',
-      artist: 'An artist'
-    },
-    {
-      icon: 'http://funkyimg.com/i/21pX5.png',
-      title:
-        'Clap Along (Lorem ipsum dolor sit amet, consectetur adipisicing.)',
-      file:
-        'http://www.naijalumia.com/wp-content/uploads/2017/10/Pink_-_Revenge_Ft_Eminem(NaijaLumia.com).mp3',
-      artist: 'An artist'
-    },
-    {
-      icon: 'http://funkyimg.com/i/21pX5.png',
-      title: 'Pop Tune',
-      file:
-        'http://incompetech.com/music/royalty-free/mp3-royaltyfree/Hitman.mp3',
-      artist: 'An artist'
-    }
-  ];
+  @Input() public playList: PlayListItem[] = [];
   private activeAudio = new Audio();
   private activeAudioTitle: string;
   private activeAudioArtist: string;
   private selectedTrackIndex: number = 0;
 
   private subscriptions: Subscription[] = [];
-
-  // end test variables
 
   constructor(private _renderer: Renderer2) {
     this._renderer.listen(this.activeAudio, 'loadedmetadata', () => {
@@ -109,8 +70,10 @@ export class Ng2AudioPlayerComponent
     });
   }
 
-  ngAfterContentInit() {
-    this.selectTrack(0, true);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes && changes['playList'] && changes['playList'].currentValue) {
+      if (this.playList.length > 0) this.selectTrack(0, true);
+    }
   }
 
   ngOnDestroy() {
