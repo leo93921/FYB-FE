@@ -29,4 +29,9 @@ export class UserManagementService {
     const url = `${this.urlBase}info/${userId}`;
     return this._http.post(url, toSave).map(res => res.json());
   }
+
+  public getProfile(userId: string) {
+    const url = `${this.urlBase}${userId}`;
+    return this._http.get(url).map(res => res.json());
+  }
 }
