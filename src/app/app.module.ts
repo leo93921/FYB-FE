@@ -8,6 +8,7 @@ import { RoutingModule } from './routing.module';
 import { ToastyModule, ToastyService } from 'ng2-toasty';
 import { BsModalModule } from 'ng2-bs3-modal';
 
+import { AuthGuardService } from './service/shared/auth-guard.service';
 import { CustomHttpService } from './service/custom-http.service';
 import { HttpFactory } from './http-factory';
 
@@ -53,7 +54,8 @@ import { MessagesComponent } from './components/messages/messages.component';
       useFactory: HttpFactory,
       deps: [XHRBackend, RequestOptions]
     },
-    ToastyService
+    ToastyService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
