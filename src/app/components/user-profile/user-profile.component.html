@@ -19,7 +19,7 @@
     <p><i class="fa fa-comment-o" aria-hidden="true"></i> 3.97<span class="seperate-h"></span><i class="fa fa-users" aria-hidden="true"></i> 98</p>
     <!-- form comunicazione -->
     <!-- {% if ingaggiabile == true %} -->
-    <button type="button" class="btn btn-success btn-outline btn-engage">Ingaggia</button>
+    <button type="button" class="btn btn-success btn-outline btn-engage" (click)="modal.open()">Ingaggia</button>
   </div>
 </ng-template>
 
@@ -76,3 +76,31 @@
     </div>
   </div>
 </div>
+
+<bs-modal #modal>
+  <bs-modal-header [showDismiss]="true">
+    <h4 class="modal-title">
+      <span>Richiedi informazioni</span>
+    </h4>
+  </bs-modal-header>
+  <bs-modal-body>
+    <form #f="ngForm" novalidate>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label>Testo</label>
+          <textarea name="text" rows="8" [(ngModel)]="communication.text" required class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label>Data prevista per l'evento</label>
+          <input type="text" class="form-control" bsDatepicker [(ngModel)]="communication.date" name="eventDate"/>
+        </div>
+      </div>
+    </form>
+  </bs-modal-body>
+  <bs-modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
+    <button type="button" class="btn btn-primary" (click)="sendMessage()" [disabled]="f.invalid">Carica</button>
+  </bs-modal-footer>
+</bs-modal>
