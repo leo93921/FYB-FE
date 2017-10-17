@@ -1,3 +1,56 @@
-<p>
-  messages works!
-</p>
+<div class="container">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <img src="assets/deal.jpg" class="img-responsive">
+        </div>
+        <div class="col-md-4" style="padding-top: 4px">
+          <div class="alert alert-dismissable alert-warning">
+            <p><b>Ciao, hai ricevuto un offerta.</b></p>
+            <p>Ti ricordiamo che se accetti questa offerta, verrai trasferito sulla pagina
+            di Paypal, dove ti verrà chiesto di inserire i dati e di effettuare un
+            pagamento. Una volta eseguito il pagamento, potrai annullare il tuo evento
+            fino a 7 giorni prima della data per cui è organizzato per non perdere
+            i tuoi fondi. Una volta trascorso tale termine, il tuo deposito verrà perso.
+            Se effettui il pagamento, stai implicitamente accettando queste condizioni.</p>
+            <p>L'offerta che hai ricevuto è di <b>75.00€</b></p>
+          </div>
+          <p class="text-center">
+            <button type="button"class="btn btn-danger btn-outline">Accetta offerta</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Stai messaggiando con fasjidfnan <button type="button" class="btn btn-success btn-outline">Fai un'offerta</button></h1>
+      </div>
+    </div>
+    <div class="row margin-top">
+      <div class="col-md-12">
+        <ng-container *ngFor="let item of messages">
+          <div class="well messages" [ngClass]="{'text-right my-messages': item.sentFrom==='2', 'messages his-messages': !(item.sentFrom==='2')}">
+            <p>{{ item.text }}</p>
+            <em>{{ item.sendDate | date:'d/M/y H:mm' }}</em>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label>Messaggio</label>
+        <textarea name="text" rows="3" class="form-control"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-right col-md-12">
+        <button type="button" class="btn btn-default">Rispondi</button>
+        <button type="button" class="btn btn-success btn-outline">Fai un'offerta</button>
+      </div>
+    </div>
+  </div>
+</div>

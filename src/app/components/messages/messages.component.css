@@ -1,0 +1,17 @@
+.messages {
+  color: #262626;
+}
+.my-messages {
+  background-color: #dcf8c6;
+  width: fit-content;
+  max-width: 95%;
+  margin-left: auto;
+}
+.his-messages {
+  background-color: #fff;
+  width: fit-content;
+  max-width: 95%;
+}
+:host>>>.container {
+  margin-bottom: 30px;
+}
