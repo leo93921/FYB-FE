@@ -17,7 +17,11 @@ const appRoutes: Routes = [
   { path: 'event', component: EventComponent },
   { path: 'profile/:userId', component: ProfileComponent },
   { path: 'user/:userId', component: UserProfileComponent },
-  { path: 'messages/:groupId', component: MessagesComponent }
+  {
+    path: 'messages/:groupId',
+    component: MessagesComponent,
+    canActivate: [AuthGuardService]
+  }
 ];
 
 @NgModule({

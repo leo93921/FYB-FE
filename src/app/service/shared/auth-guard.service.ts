@@ -15,7 +15,7 @@ export class AuthGuardService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (/u=(.*);.{0,1}role=(.{1,4})/.test(document.cookie)) {
+    if (/e=(.*);.{0,1}t=(.{1,5});.{0,1}i=(.*)/.test(document.cookie)) {
       this.isConnectedUser = true;
     } else {
       this.isConnectedUser = false;
