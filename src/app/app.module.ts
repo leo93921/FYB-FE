@@ -10,6 +10,7 @@ import { BsModalModule } from 'ng2-bs3-modal';
 
 import { AuthGuardService } from './service/shared/auth-guard.service';
 import { CustomHttpService } from './service/custom-http.service';
+import { UserRepoService } from './service/shared/user-repo.service';
 import { HttpFactory } from './http-factory';
 
 import { AppComponent } from './app.component';
@@ -55,7 +56,8 @@ import { MessagesComponent } from './components/messages/messages.component';
       deps: [XHRBackend, RequestOptions]
     },
     ToastyService,
-    AuthGuardService
+    AuthGuardService,
+    UserRepoService
   ],
   bootstrap: [AppComponent]
 })
