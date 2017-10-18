@@ -3,8 +3,8 @@ export class Communication {
   sentTo: string;
   sentFrom: string;
   text: String;
-  date: Date; // Date of the event
-  sendDate: Date;
+  date: number; // Date of the event
+  sendDate: number;
   read: Boolean;
   group: String;
 }

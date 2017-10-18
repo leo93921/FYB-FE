@@ -75,7 +75,7 @@ export class UserProfileComponent implements OnInit {
     this.communication.sentTo = this.userId;
     this.communication.sentFrom = this.userId;
     this.communication.read = false;
-    this.communication.sendDate = new Date();
+    this.communication.sendDate = new Date().getTime();
     this._communicationService
       .sendCommunication(this.communication)
       .subscribe(res => {

@@ -33,9 +33,9 @@
     <div class="row margin-top">
       <div class="col-md-12">
         <ng-container *ngFor="let item of messages">
-          <div class="well messages" [ngClass]="{'text-right my-messages': item.sentFrom==='2', 'messages his-messages': !(item.sentFrom==='2')}">
+          <div class="well messages" [ngClass]="{'text-right my-messages': item.sentFrom==2, 'messages his-messages': !(item.sentFrom==2)}">
             <p>{{ item.text }}</p>
-            <em>{{ item.sendDate | date:'d/M/y H:mm' }}</em>
+            <em>{{ item.sendDate | date:'dd/MM/yyyy HH:mm' }}</em>
           </div>
         </ng-container>
       </div>
@@ -43,12 +43,12 @@
     <div class="row">
       <div class="form-group col-md-12">
         <label>Messaggio</label>
-        <textarea name="text" rows="3" class="form-control"></textarea>
+        <textarea name="text" rows="3" class="form-control" [(ngModel)]="communication.text"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="text-right col-md-12">
-        <button type="button" class="btn btn-default">Rispondi</button>
+        <button type="button" class="btn btn-default" (click)="answer()">Rispondi</button>
         <button type="button" class="btn btn-success btn-outline">Fai un'offerta</button>
       </div>
     </div>

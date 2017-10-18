@@ -14,4 +14,9 @@ export class CommunicationService {
     const url = `${this.baseUrl}`;
     return this._http.put(url, communication).map(res => res.text());
   }
+
+  public getMessages(groupId: string): Observable<any> {
+    const url = `${this.baseUrl}/${groupId}`;
+    return this._http.get(url).map(res => res.json());
+  }
 }
