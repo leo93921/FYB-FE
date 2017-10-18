@@ -6,4 +6,7 @@ export class Constants {
   public static readonly IMAGE_FILES = 'image';
 
   public static readonly GOOGLE_COORD_NO_RESULTS = 'ZERO_RESULTS';
+
+  public static readonly USER_GROUP_TYPE = 'GROUP';
+  public static readonly USER_PLACE_TYPE = 'PLACE';
 }
