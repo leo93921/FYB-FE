@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { MediaContainer } from '../../model/media-container';
 import { Messages } from '../../model/messages';
@@ -8,6 +7,7 @@ import { DomainService } from '../../service/domain.service';
 import { UserManagementService } from '../../service/user-management.service';
 import { UtilsService } from '../../service/utils.service';
 import { MessageService } from '../../service/message.service';
+import { UserRepoService } from '../../service/shared/user-repo.service';
 import { Constants } from '../../constants';
 import { BsModalComponent } from 'ng2-bs3-modal';
 
@@ -39,27 +39,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(
-    private _activatedRoute: ActivatedRoute,
     private _mediaManagement: MediaManagementService,
     private _messageService: MessageService,
     private _userManager: UserManagementService,
     private _utils: UtilsService,
-    private _domainService: DomainService
+    private _domainService: DomainService,
+    private _userRepo: UserRepoService
   ) {}
 
   ngOnInit() {
-    this._activatedRoute.params
-      .switchMap((params: Params) => {
-        this.mediaContainer.userId = params['userId'];
-        this.userId = params['userId'];
-        this.refreshGenericData();
-        this.refreshTracks();
-        this.refreshImages();
-        return this._domainService.getDomain('price_band');
-      })
-      .subscribe(res => {
-        this.domains = res;
-      });
+    this.userId = this._userRepo.getCookieValue(UserRepoService.USER_ID);
+    this.mediaContainer.userId = this.userId;
+    this.refreshGenericData();
+    this.refreshTracks();
+    this.refreshImages();
+    this._domainService.getDomain('price_band').subscribe(res => {
+      this.domains = res;
+    });
   }
 
   ngOnDestroy() {

@@ -15,7 +15,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'event', component: EventComponent },
-  { path: 'profile/:userId', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'user/:userId', component: UserProfileComponent },
   {
     path: 'messages/:groupId',
