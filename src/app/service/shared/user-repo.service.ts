@@ -5,6 +5,7 @@ export class UserRepoService {
   public static readonly USER_EMAIL = 'e';
   public static readonly USER_ID = 'i';
   public static readonly USER_TYPE = 't';
+  public static readonly USER_NAME = 'n';
 
   constructor() {}
 
