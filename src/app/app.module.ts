@@ -26,6 +26,7 @@ import { Ng2AudioPlayerComponent } from './components/shared/ng2-audio-player/ng
 import { MessagesComponent } from './components/messages/messages.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { ToDatePipe } from './pipes/to-date.pipe';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ToDatePipe } from './pipes/to-date.pipe';
     Ng2AudioPlayerComponent,
     MessagesComponent,
     MessageListComponent,
-    ToDatePipe
+    ToDatePipe,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
     path: 'messages/:groupId',
     component: MessagesComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
   }
 ];
 
