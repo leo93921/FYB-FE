@@ -13,3 +13,9 @@
   cursor: pointer;
   padding: 10px;
 }
+.message-unread {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  background-color: #d9534f !important;
+}
