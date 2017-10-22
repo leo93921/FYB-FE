@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>I tuoi messaggi</h1>
+  <div class="section margin-top">
+    <div class="row">
+      <div class="col-md-3 col-xs-12" *ngFor="let item of messages">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4>{{ item.name }}</h4>
+            <p>
+              <i class="fa fa-clock-o" aria-hidden="true"></i> {{ item.lastTime | toDate | date:'HH:mm' }}
+              <i class="fa fa-calendar" aria-hidden="true"></i> {{ item.lastTime | toDate | date:'dd/MM/yyyy' }}
+            </p>
+            <p class="">{{ item.text }}</p>
+            </div>
+            <div class="thumbnail-footer">
+              <a routerLink="/messages/{{item.groupId}}" role="button" class="thumbnail-link">Dettagli</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>

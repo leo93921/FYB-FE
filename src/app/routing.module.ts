@@ -10,6 +10,7 @@ import { EventComponent } from './components/event/event.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { MessageListComponent } from './components/message-list/message-list.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,6 +18,11 @@ const appRoutes: Routes = [
   { path: 'event', component: EventComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user/:userId', component: UserProfileComponent },
+  {
+    path: 'messages',
+    component: MessageListComponent,
+    canActivate: [AuthGuardService]
+  },
   {
     path: 'messages/:groupId',
     component: MessagesComponent,

@@ -19,4 +19,9 @@ export class CommunicationService {
     const url = `${this.baseUrl}/${groupId}`;
     return this._http.get(url).map(res => res.json());
   }
+
+  public getMessagesForUser(userId: string): Observable<any> {
+    const url = `${Constants.API_BASE}/communications/${userId}`;
+    return this._http.get(url).map(res => res.json());
+  }
 }

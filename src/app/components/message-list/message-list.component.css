@@ -1,0 +1,15 @@
+.thumbnail {
+  position: relative;
+  padding: 0px;
+}
+.thumbnail-footer {
+  background-color: #93d1ff;
+  padding: 10px;
+  text-align: center;
+}
+.thumbnail-link {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px;
+}

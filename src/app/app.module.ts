@@ -24,6 +24,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { Ng2AudioPlayerComponent } from './components/shared/ng2-audio-player/ng2-audio-player.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { MessageListComponent } from './components/message-list/message-list.component';
+import { ToDatePipe } from './pipes/to-date.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MessagesComponent } from './components/messages/messages.component';
     ProfileComponent,
     UserProfileComponent,
     Ng2AudioPlayerComponent,
-    MessagesComponent
+    MessagesComponent,
+    MessageListComponent,
+    ToDatePipe
   ],
   imports: [
     BrowserModule,
