@@ -27,6 +27,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { ToDatePipe } from './pipes/to-date.pipe';
 import { LogoutComponent } from './components/logout/logout.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     MessagesComponent,
     MessageListComponent,
     ToDatePipe,
-    LogoutComponent
+    LogoutComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

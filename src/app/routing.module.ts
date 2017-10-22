@@ -12,8 +12,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { MessagesComponent } from './components/messages/messages.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 const appRoutes: Routes = [
+  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'event', component: EventComponent },
