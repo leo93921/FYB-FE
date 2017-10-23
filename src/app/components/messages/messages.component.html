@@ -54,47 +54,48 @@
       </div>
     </div>
   </div>
+</div>
 
-  <bs-modal #modal>
-    <bs-modal-header [showDismiss]="true">
-      <h4 class="modal-title">
-        <span>Fai un'offerta</span>
-      </h4>
-    </bs-modal-header>
-    <bs-modal-body>
-      <div class="alert alert-info">
-        <strong>Giusto per chiarezza!</strong>
-        Una volta inviata la richiesta, sarà possibile rivedere i dati inseriti riaccedendo di
-        nuovo a questa sezione. Ti sarà possibile modificare i dati fino a quando il gruppo non
-        accetterà la proposta.
+<bs-modal #modal>
+  <bs-modal-header [showDismiss]="true">
+    <h4 class="modal-title">
+      <span>Fai un'offerta</span>
+    </h4>
+  </bs-modal-header>
+  <bs-modal-body>
+    <div class="alert alert-info">
+      <strong>Giusto per chiarezza!</strong>
+      Una volta inviata la richiesta, sarà possibile rivedere i dati inseriti riaccedendo di
+      nuovo a questa sezione. Ti sarà possibile modificare i dati fino a quando il gruppo non
+      accetterà la proposta.
+    </div>
+    <form #f="ngForm" novalidate>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 form-group">
+          <label>Nome evento</label>
+          <input type="text" name="name" class="form-control" required [(ngModel)]="offer.name">
+        </div>
+        <div class="col-sm-6 col-xs-12 form-group">
+          <label>Data prevista</label>
+          <input type="text" class="form-control" bsDatepicker name="eventDate" required [(ngModel)]="offer.date"/>
+        </div>
       </div>
-      <form #f="ngForm" novalidate>
-        <div class="row">
-          <div class="col-sm-6 col-xs-12 form-group">
-            <label>Nome evento</label>
-            <input type="text" name="name" class="form-control" required [(ngModel)]="offer.name">
-          </div>
-          <div class="col-sm-6 col-xs-12 form-group">
-            <label>Data prevista</label>
-            <input type="text" class="form-control" bsDatepicker name="eventDate" required [(ngModel)]="offer.date"/>
-          </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label>Descrizione</label>
+          <textarea name="desription" rows="3" class="form-control" required [(ngModel)]="offer.description"></textarea>
         </div>
-        <div class="row">
-          <div class="col-sm-12 form-group">
-            <label>Descrizione</label>
-            <textarea name="desription" rows="3" class="form-control" required [(ngModel)]="offer.description"></textarea>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 form-group">
+          <label>Prezzo</label>
+          <input type="text" name="price" class="form-control" [(ngModel)]="offer.price" pattern="[0-9]{1,5}([.][0-9]{0,2})?" required>
         </div>
-        <div class="row">
-          <div class="col-sm-6 col-xs-12 form-group">
-            <label>Prezzo</label>
-            <input type="text" name="price" class="form-control" [(ngModel)]="offer.price" pattern="[0-9]{1,5}([.][0-9]{0,2})?" required>
-          </div>
-        </div>
-      </form>
-    </bs-modal-body>
-    <bs-modal-footer>
-      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
-      <button type="button" class="btn btn-primary" (click)="sendOffer()" [disabled]="f.invalid">Invia offerta</button>
-    </bs-modal-footer>
-  </bs-modal>
+      </div>
+    </form>
+  </bs-modal-body>
+  <bs-modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
+    <button type="button" class="btn btn-primary" (click)="sendOffer()" [disabled]="f.invalid">Invia offerta</button>
+  </bs-modal-footer>
+</bs-modal>
