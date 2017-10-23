@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit {
     private _userRepo: UserRepoService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._userRepo.clearCookies();
+  }
 
   public login(): void {
     this._userManagementService

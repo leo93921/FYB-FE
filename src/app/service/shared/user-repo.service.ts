@@ -28,4 +28,13 @@ export class UserRepoService {
       }
     }
   }
+
+  public clearCookies(): void {
+    this.isConnected = false;
+    this.connecterUser = '';
+    for (const item of document.cookie.split(';')) {
+      const name = item.split('=')[0];
+      document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    }
+  }
 }
