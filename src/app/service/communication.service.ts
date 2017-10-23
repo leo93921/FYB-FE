@@ -20,8 +20,8 @@ export class CommunicationService {
     return this._http.get(url).map(res => res.json());
   }
 
-  public getMessagesForUser(userId: string): Observable<any> {
-    const url = `${Constants.API_BASE}/communications/${userId}`;
+  public getMessagesForUser(): Observable<any> {
+    const url = `${Constants.API_BASE}/communications`;
     return this._http.get(url).map(res => res.json());
   }
 }

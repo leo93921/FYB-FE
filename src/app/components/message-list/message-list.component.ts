@@ -22,7 +22,7 @@ export class MessageListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userId = this._userRepo.getCookieValue(UserRepoService.USER_ID);
     this.subscription = this._communicationService
-      .getMessagesForUser(this.userId)
+      .getMessagesForUser()
       .subscribe(res => {
         this.messages = res;
       });
