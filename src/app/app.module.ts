@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -28,6 +29,7 @@ import { MessageListComponent } from './components/message-list/message-list.com
 import { ToDatePipe } from './pipes/to-date.pipe';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { MessageService } from './service/message.service';
 
 @NgModule({
   declarations: [
@@ -61,11 +63,12 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     {
       provide: Http,
       useFactory: HttpFactory,
-      deps: [XHRBackend, RequestOptions]
+      deps: [XHRBackend, RequestOptions, MessageService, Router]
     },
     ToastyService,
     AuthGuardService,
-    UserRepoService
+    UserRepoService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
