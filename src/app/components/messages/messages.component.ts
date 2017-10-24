@@ -27,6 +27,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
+  public OPEN_AS_ACCEPT_OFFER = 1;
+  public OPEN_AS_MODIFY_OFFER = 2;
+  public modalMode: number;
+
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _communicationService: CommunicationService,
@@ -103,7 +107,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
       });
   }
 
-  public openModal() {
+  public openModal(openType: number) {
+    this.modalMode = openType;
     this.refreshOffer(true);
   }
 
@@ -126,5 +131,18 @@ export class MessagesComponent implements OnInit, OnDestroy {
           this.offerModal.close();
         }
       });
+  }
+
+  public accept(): void {
+    this._eventService.acceptOffer(this.groupId).subscribe(res => {
+      this._messageService.showSuccess(
+        'Congratulazioni',
+        `Congratulazioni, hai accettato l'offerta. Non appena il proprietario del locale
+        effettuerà il pagamento, te lo faremo sapere. Puoi controllare lo stato dell'evento
+        cliccando sulla voce <b>Eventi</b> del menu.`
+      );
+      this.offer.accepted = true;
+      this.offerModal.close();
+    });
   }
 }

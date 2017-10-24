@@ -18,4 +18,9 @@ export class EventService {
     const url = `${this.urlBase}${messageGroup}`;
     return this._http.get(url).map(res => res.json());
   }
+
+  public acceptOffer(messageGroup: string) {
+    const url = `${this.urlBase}${messageGroup}`;
+    return this._http.put(url, { accept: true }).map(res => res.json());
+  }
 }
