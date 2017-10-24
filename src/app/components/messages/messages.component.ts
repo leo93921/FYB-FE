@@ -24,6 +24,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   @ViewChild('modal') private offerModal: any;
   public anOfferExist: boolean;
   public isAGroup: boolean;
+  public messagingUser: string;
 
   private subscriptions: Subscription[] = [];
 
@@ -51,8 +52,9 @@ export class MessagesComponent implements OnInit, OnDestroy {
       })
       .subscribe(res => {
         this.refreshOffer();
-        this.messages = res;
-        const comm = res[0];
+        this.messages = res.messages;
+        this.messagingUser = res.name;
+        const comm = this.messages[0];
         if (comm.sentFrom == this.userId) {
           this.recipient = comm.sentTo;
         } else {
