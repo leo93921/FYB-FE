@@ -26,6 +26,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   public isAGroup: boolean;
   public messagingUser: string;
 
+  // TODO Add the subscriptions
   private subscriptions: Subscription[] = [];
 
   public OPEN_AS_ACCEPT_OFFER = 1;
@@ -145,6 +146,12 @@ export class MessagesComponent implements OnInit, OnDestroy {
       );
       this.offer.accepted = true;
       this.offerModal.close();
+    });
+  }
+
+  public pay(): void {
+    this._eventService.pay(this.groupId).subscribe(res => {
+      window.location.replace(res);
     });
   }
 }

@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="section" *ngIf="offer && offer?.accepted">
+    <div class="section" *ngIf="offer && offer?.accepted && isAGroup">
       <div class="row">
         <div class="col-md-12">
           <div class="alert alert-info">
@@ -37,11 +37,35 @@
       </div>
     </div>
 
+    <div class="section" *ngIf="offer && offer?.accepted && !isAGroup">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            <strong>E' stata accettata una richiesta per un evento!</strong>
+            <p>
+              Ci risulta che il gruppo da te ingaggiato abbia accettato la proposta fatta, complimenti!
+              Puoi effettuare il pagamento mediante il seguento tasto. Non appena finito, verr&agrave;
+              creato un evento e potrai pubblicizzarlo sui tuoi social.
+            </p>
+            <p>
+              Per effettuare il pagamento verrai reindirizzato su PayPal e, una volta fatto,
+              ritornerai in questa pagina. Ti mostreremo un avviso con l'esito dell'operazione.
+            </p>
+          </div>
+          <div class="col-md-12">
+            <div class="text-right">
+              <button type="button" class="btn btn-danger btn-outline" (click)="pay()" name="button">Effettua pagamento</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="section">
       <div class="row">
         <div class="col-md-12">
           <h1>Stai messaggiando con {{ messagingUser }}
-            <button *ngIf="!isAGroup" type="button" class="btn btn-success btn-outline" (click)="openModal(OPEN_AS_MODIFY_OFFER)">Fai un'offerta</button>
+            <button *ngIf="!isAGroup && !offer?.accepted" type="button" class="btn btn-success btn-outline" (click)="openModal(OPEN_AS_MODIFY_OFFER)">Fai un'offerta</button>
           </h1>
         </div>
       </div>
@@ -64,7 +88,7 @@
       <div class="row">
         <div class="text-right col-md-12">
           <button type="button" class="btn btn-default" (click)="answer()">Rispondi</button>
-          <button *ngIf="!isAGroup" type="button" class="btn btn-success btn-outline" (click)="openModal(OPEN_AS_MODIFY_OFFER)">Fai un'offerta</button>
+          <button *ngIf="!isAGroup && !offer?.accepted" type="button" class="btn btn-success btn-outline" (click)="openModal(OPEN_AS_MODIFY_OFFER)">Fai un'offerta</button>
         </div>
       </div>
     </div>

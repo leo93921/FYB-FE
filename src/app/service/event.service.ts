@@ -19,8 +19,13 @@ export class EventService {
     return this._http.get(url).map(res => res.json());
   }
 
-  public acceptOffer(messageGroup: string) {
+  public acceptOffer(messageGroup: string): Observable<any> {
     const url = `${this.urlBase}${messageGroup}`;
     return this._http.put(url, { accept: true }).map(res => res.json());
+  }
+
+  public pay(messageGroup: string): Observable<any> {
+    const url = `${this.urlBase}pay/${messageGroup}`;
+    return this._http.get(url).map(res => res.text());
   }
 }
