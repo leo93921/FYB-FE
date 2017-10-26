@@ -149,9 +149,9 @@ export class MessagesComponent implements OnInit, OnDestroy {
     });
   }
 
-  public pay(): void {
-    this._eventService.pay(this.groupId).subscribe(res => {
-      window.location.replace(res);
+  public approve(): void {
+    this._eventService.approve(this.groupId).subscribe(res => {
+      window.location.href = res;
     });
   }
 }

@@ -13,6 +13,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { ElaboratePaymentComponent } from './components/payments/elaborate-payment/elaborate-payment.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
@@ -34,6 +35,10 @@ const appRoutes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  {
+    path: 'elaborate/:groupId',
+    component: ElaboratePaymentComponent
   }
 ];
 
