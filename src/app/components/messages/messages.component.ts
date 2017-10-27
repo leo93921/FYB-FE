@@ -15,7 +15,7 @@ import { Communication } from '../../model/communication';
   providers: [CommunicationService, EventService, MessageService]
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-  private userId: string;
+  public userId: string;
   private groupId: string;
   public messages: Communication[] = [];
   public communication: Communication = new Communication();

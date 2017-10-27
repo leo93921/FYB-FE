@@ -1,175 +1,218 @@
 <div class="container">
-  <div class="section" *ngIf="anOfferExist && isAGroup && !offer?.accepted">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <img src="assets/deal.jpg" class="img-responsive">
-        </div>
-        <div class="col-md-4" style="padding-top: 4px">
-          <div class="alert alert-dismissable alert-warning">
-            <p><b>Ciao, hai ricevuto un offerta.</b></p>
-            <p>Ti ricordiamo che se accetti questa offerta, verrai trasferito sulla pagina
-              di Paypal, dove ti verrà chiesto di inserire i dati e di effettuare un
-              pagamento. Una volta eseguito il pagamento, potrai annullare il tuo evento
-              fino a 7 giorni prima della data per cui è organizzato per non perdere
-              i tuoi fondi. Una volta trascorso tale termine, il tuo deposito verrà perso.
-              Se effettui il pagamento, stai implicitamente accettando queste condizioni.</p>
-              <p>Premi sul pulsante per vedere i dettagli dell'offerta che hai ricevuto.</p>
+
+  <ng-container *ngIf="isAGroup">
+    <div class="section" *ngIf="anOfferExist && !offer?.accepted">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <img src="assets/deal.jpg" class="img-responsive">
+          </div>
+          <div class="col-md-4" style="padding-top: 4px">
+            <div class="alert alert-dismissable alert-warning">
+              <p><b>Ciao, hai ricevuto un offerta.</b></p>
+              <p>Ti ricordiamo che se accetti questa offerta, verrai trasferito sulla pagina
+                di Paypal, dove ti verrà chiesto di inserire i dati e di effettuare un
+                pagamento. Una volta eseguito il pagamento, potrai annullare il tuo evento
+                fino a 7 giorni prima della data per cui è organizzato per non perdere
+                i tuoi fondi. Una volta trascorso tale termine, il tuo deposito verrà perso.
+                Se effettui il pagamento, stai implicitamente accettando queste condizioni.</p>
+                <p>Premi sul pulsante per vedere i dettagli dell'offerta che hai ricevuto.</p>
+              </div>
+              <p class="text-center">
+                <button type="button"class="btn btn-danger btn-outline" (click)="openModal(OPEN_AS_ACCEPT_OFFER)">Visualizza l'offerta</button>
+              </p>
             </div>
-            <p class="text-center">
-              <button type="button"class="btn btn-danger btn-outline" (click)="openModal(OPEN_AS_ACCEPT_OFFER)">Visualizza l'offerta</button>
-            </p>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="section" *ngIf="offer && offer?.accepted && isAGroup">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="alert alert-info">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>E' stata accettata una richiesta per un evento!</strong>
-            <p>Ci risulta che tu abbia accettato una proposta, complimenti! Ti
-              faremo sapere qu&igrave; non appena il locale effettuer&agrave; il pagamento!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" *ngIf="offer && offer?.accepted && !isAGroup">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="alert alert-info">
-            <strong>E' stata accettata una richiesta per un evento!</strong>
-            <p>
-              Ci risulta che il gruppo da te ingaggiato abbia accettato la proposta fatta, complimenti!
-              Puoi effettuare il pagamento mediante il seguento tasto. Non appena finito, verr&agrave;
-              creato un evento e potrai pubblicizzarlo sui tuoi social.
-            </p>
-            <p>
-              Per effettuare il pagamento verrai reindirizzato su PayPal e, una volta fatto,
-              ritornerai in questa pagina. Ti mostreremo un avviso con l'esito dell'operazione.
-            </p>
-          </div>
+      <div class="section" *ngIf="offer && offer?.accepted && !offer?.paid">
+        <div class="row">
           <div class="col-md-12">
-            <div class="text-right">
-              <button type="button" class="btn btn-danger btn-outline" (click)="approve()" name="button">Effettua pagamento</button>
+            <div class="alert alert-info">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>E' stata accettata una richiesta per un evento!</strong>
+              <p>Ci risulta che tu abbia accettato una proposta, complimenti! Ti
+                faremo sapere qu&igrave; non appena il locale effettuer&agrave; il pagamento!</p>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Richiesta annullamento -->
+        <div class="section" *ngIf="offer && offer?.accepted && offer?.paid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-info">
+                <strong>L'evento &egrave; stato organizzato! Complimenti!</strong>
+                <p>
+                  Puoi vedere le informazioni dell'evento cliccando <strong><a role="button">qu&igrave;</a></strong>.
+                  Una volta entrato nella pagina, potrai condividere sui social la pagina in modo da raggiungere
+                  quanti pi&ugrave; utenti possibile.<br>
+                  <strong>Buon divertimento!</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!isAGroup">
+        <!-- Pagamento per l'evento -->
+        <div class="section" *ngIf="offer && offer?.accepted && !offer?.paid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-info">
+                <strong>E' stata accettata una richiesta per un evento!</strong>
+                <p>
+                  Ci risulta che il gruppo da te ingaggiato abbia accettato la proposta fatta, complimenti!
+                  Puoi effettuare il pagamento mediante il seguento tasto. Non appena finito, verr&agrave;
+                  creato un evento e potrai pubblicizzarlo sui tuoi social.
+                </p>
+                <p>
+                  Per effettuare il pagamento verrai reindirizzato su PayPal e, una volta fatto,
+                  ritornerai in questa pagina. Ti mostreremo un avviso con l'esito dell'operazione.
+                </p>
+              </div>
+              <div class="col-md-12">
+                <div class="text-right">
+                  <button type="button" class="btn btn-danger btn-outline" (click)="approve()" name="button">Effettua pagamento</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offerta pagata -->
+        <div class="section" *ngIf="offer && offer?.accepted && offer?.paid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-info">
+                <strong>L'evento &egrave; stato organizzato! Complimenti!</strong>
+                <p>
+                  Puoi vedere le informazioni dell'evento cliccando <strong><a role="button">qu&igrave;</a></strong>.
+                  Una volta entrato nella pagina, potrai condividere sui social la pagina in modo da raggiungere
+                  quanti pi&ugrave; utenti possibile.<br>
+                  <strong>Buon divertimento!</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+
+
+
+      <div class="section">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Stai messaggiando con {{ messagingUser }}
+              <button *ngIf="!isAGroup && !offer?.accepted" type="button" class="btn btn-success btn-outline" (click)="openModal(OPEN_AS_MODIFY_OFFER)">Fai un'offerta</button>
+            </h1>
+          </div>
+        </div>
+        <div class="row margin-top">
+          <div class="col-md-12">
+            <ng-container *ngFor="let item of messages">
+              <div class="well messages" [ngClass]="{'text-right my-messages': item.sentFrom==userId, 'messages his-messages': !(item.sentFrom==userId)}">
+                <p>{{ item.text }}</p>
+                <em>{{ item.sendDate | date:'dd/MM/yyyy HH:mm' }}</em>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>Messaggio</label>
+            <textarea name="text" rows="3" class="form-control" [(ngModel)]="communication.text"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text-right col-md-12">
+            <button type="button" class="btn btn-default" (click)="answer()">Rispondi</button>
+            <button *ngIf="!isAGroup && !offer?.accepted" type="button" class="btn btn-success btn-outline" (click)="openModal(OPEN_AS_MODIFY_OFFER)">Fai un'offerta</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="row">
-        <div class="col-md-12">
-          <h1>Stai messaggiando con {{ messagingUser }}
-            <button *ngIf="!isAGroup && !offer?.accepted" type="button" class="btn btn-success btn-outline" (click)="openModal(OPEN_AS_MODIFY_OFFER)">Fai un'offerta</button>
-          </h1>
-        </div>
-      </div>
-      <div class="row margin-top">
-        <div class="col-md-12">
-          <ng-container *ngFor="let item of messages">
-            <div class="well messages" [ngClass]="{'text-right my-messages': item.sentFrom==2, 'messages his-messages': !(item.sentFrom==2)}">
-              <p>{{ item.text }}</p>
-              <em>{{ item.sendDate | date:'dd/MM/yyyy HH:mm' }}</em>
+    <bs-modal #modal>
+      <bs-modal-header [showDismiss]="true">
+        <h4 class="modal-title">
+          <span *ngIf="modalMode===OPEN_AS_MODIFY_OFFER">Fai un'offerta</span>
+          <span *ngIf="modalMode===OPEN_AS_ACCEPT_OFFER">Accetta l'offerta</span>
+        </h4>
+      </bs-modal-header>
+      <bs-modal-body>
+        <form #f="ngForm" novalidate>
+          <ng-container *ngIf="modalMode===OPEN_AS_MODIFY_OFFER; else acceptOffer">
+            <div class="alert alert-info">
+              <strong>Stai per inviare una richiesta!</strong>
+              Una volta inviata la richiesta, sarà possibile rivedere i dati inseriti riaccedendo di
+              nuovo a questa sezione. Ti sarà possibile modificare i dati fino a quando il gruppo non
+              accetterà la proposta.
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-xs-12 form-group">
+                <label>Nome evento</label>
+                <input type="text" name="name" class="form-control" required [(ngModel)]="offer.name">
+              </div>
+              <div class="col-sm-6 col-xs-12 form-group">
+                <label>Data prevista</label>
+                <input type="text" class="form-control" bsDatepicker name="eventDate" required [(ngModel)]="offer.date"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <label>Descrizione</label>
+                <textarea name="desription" rows="3" class="form-control" required [(ngModel)]="offer.description"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-xs-12 form-group">
+                <label>Prezzo</label>
+                <input type="text" name="price" class="form-control" [(ngModel)]="offer.price" pattern="[0-9]{1,5}([.][0-9]{0,2})?" required>
+              </div>
             </div>
           </ng-container>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-md-12">
-          <label>Messaggio</label>
-          <textarea name="text" rows="3" class="form-control" [(ngModel)]="communication.text"></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="text-right col-md-12">
-          <button type="button" class="btn btn-default" (click)="answer()">Rispondi</button>
-          <button *ngIf="!isAGroup && !offer?.accepted" type="button" class="btn btn-success btn-outline" (click)="openModal(OPEN_AS_MODIFY_OFFER)">Fai un'offerta</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <bs-modal #modal>
-    <bs-modal-header [showDismiss]="true">
-      <h4 class="modal-title">
-        <span *ngIf="modalMode===OPEN_AS_MODIFY_OFFER">Fai un'offerta</span>
-        <span *ngIf="modalMode===OPEN_AS_ACCEPT_OFFER">Accetta l'offerta</span>
-      </h4>
-    </bs-modal-header>
-    <bs-modal-body>
-      <form #f="ngForm" novalidate>
-        <ng-container *ngIf="modalMode===OPEN_AS_MODIFY_OFFER; else acceptOffer">
-          <div class="alert alert-info">
-            <strong>Stai per inviare una richiesta!</strong>
-            Una volta inviata la richiesta, sarà possibile rivedere i dati inseriti riaccedendo di
-            nuovo a questa sezione. Ti sarà possibile modificare i dati fino a quando il gruppo non
-            accetterà la proposta.
-          </div>
-          <div class="row">
-            <div class="col-sm-6 col-xs-12 form-group">
-              <label>Nome evento</label>
-              <input type="text" name="name" class="form-control" required [(ngModel)]="offer.name">
-            </div>
-            <div class="col-sm-6 col-xs-12 form-group">
-              <label>Data prevista</label>
-              <input type="text" class="form-control" bsDatepicker name="eventDate" required [(ngModel)]="offer.date"/>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 form-group">
-              <label>Descrizione</label>
-              <textarea name="desription" rows="3" class="form-control" required [(ngModel)]="offer.description"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 col-xs-12 form-group">
-              <label>Prezzo</label>
-              <input type="text" name="price" class="form-control" [(ngModel)]="offer.price" pattern="[0-9]{1,5}([.][0-9]{0,2})?" required>
-            </div>
-          </div>
+        </form>
+      </bs-modal-body>
+      <bs-modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
+        <ng-container *ngIf="modalMode===OPEN_AS_MODIFY_OFFER">
+          <button type="button" class="btn btn-primary" (click)="sendOffer()" [disabled]="f.invalid">Invia offerta</button>
         </ng-container>
-      </form>
-    </bs-modal-body>
-    <bs-modal-footer>
-      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
-      <ng-container *ngIf="modalMode===OPEN_AS_MODIFY_OFFER">
-        <button type="button" class="btn btn-primary" (click)="sendOffer()" [disabled]="f.invalid">Invia offerta</button>
-      </ng-container>
-      <button *ngIf="modalMode===OPEN_AS_ACCEPT_OFFER" type="button" class="btn btn-danger" (click)="accept()" name="button">Accetta</button>
-    </bs-modal-footer>
-  </bs-modal>
+        <button *ngIf="modalMode===OPEN_AS_ACCEPT_OFFER" type="button" class="btn btn-danger" (click)="accept()" name="button">Accetta</button>
+      </bs-modal-footer>
+    </bs-modal>
 
-  <ng-template #acceptOffer>
-    <div class="alert alert-info">
-      <strong>Stai per accettare un'offerta!</strong>
-      Una volta accettata l'offerta, non sarà più possibile annullare. Se accetti, ti impegni a
-      tenere l'evento come indicato nel prossimo sommario.
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-xs-12 form-group">
-        <label>Nome evento</label>
-        <p>{{ offer.name }}</p>
+    <ng-template #acceptOffer>
+      <div class="alert alert-info">
+        <strong>Stai per accettare un'offerta!</strong>
+        Una volta accettata l'offerta, non sarà più possibile annullare. Se accetti, ti impegni a
+        tenere l'evento come indicato nel prossimo sommario.
       </div>
-      <div class="col-sm-6 col-xs-12 form-group">
-        <label>Data prevista</label>
-        <p>{{ offer.date | date:'dd/MM/yyyy' }}</p>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 form-group">
+          <label>Nome evento</label>
+          <p>{{ offer.name }}</p>
+        </div>
+        <div class="col-sm-6 col-xs-12 form-group">
+          <label>Data prevista</label>
+          <p>{{ offer.date | date:'dd/MM/yyyy' }}</p>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 form-group">
-        <label>Descrizione</label>
-        <p>{{ offer.description }}</p>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label>Descrizione</label>
+          <p>{{ offer.description }}</p>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-xs-12 form-group">
-        <label>Prezzo</label>
-        <p>{{ offer.price | currency:'EUR':'1.2-2' }}</p>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 form-group">
+          <label>Prezzo</label>
+          <p>{{ offer.price | currency:'EUR':'1.2-2' }}</p>
+        </div>
       </div>
-    </div>
-  </ng-template>
+    </ng-template>
