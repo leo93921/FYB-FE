@@ -37,7 +37,6 @@ const appRoutes: Routes = [
     component: LogoutComponent
   },
   {
-    // TODO cancel page
     path: 'elaborate/:groupId',
     component: ElaboratePaymentComponent
   }
