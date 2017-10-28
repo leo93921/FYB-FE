@@ -20,7 +20,11 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'event/:eventId/:eventName', component: EventComponent },
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardService]
+  },
   { path: 'user/:userId', component: UserProfileComponent },
   {
     path: 'messages',
@@ -38,7 +42,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'elaborate/:groupId',
-    component: ElaboratePaymentComponent
+    component: ElaboratePaymentComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 
