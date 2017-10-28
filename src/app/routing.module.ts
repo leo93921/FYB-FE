@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'event', component: EventComponent },
+  { path: 'event/:eventId/:eventName', component: EventComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user/:userId', component: UserProfileComponent },
   {
@@ -37,6 +37,7 @@ const appRoutes: Routes = [
     component: LogoutComponent
   },
   {
+    // TODO cancel page
     path: 'elaborate/:groupId',
     component: ElaboratePaymentComponent
   }
