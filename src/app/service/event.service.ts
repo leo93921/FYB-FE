@@ -35,4 +35,9 @@ export class EventService {
       .post(url, { payerID: info.payerID, paymentId: info.paymentId })
       .map(res => res.json());
   }
+
+  public getEventInfo(eventId: string): Observable<any> {
+    const url = `${this.urlBase}for-user/${eventId}`;
+    return this._http.get(url).map(res => res.json());
+  }
 }
