@@ -31,6 +31,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { MessageService } from './service/message.service';
 import { ElaboratePaymentComponent } from './components/payments/elaborate-payment/elaborate-payment.component';
+import { ReplacePipe } from './pipes/replace.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ElaboratePaymentComponent } from './components/payments/elaborate-payme
     ToDatePipe,
     LogoutComponent,
     HomepageComponent,
-    ElaboratePaymentComponent
+    ElaboratePaymentComponent,
+    ReplacePipe
   ],
   imports: [
     BrowserModule,
