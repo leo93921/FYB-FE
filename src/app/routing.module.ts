@@ -14,6 +14,7 @@ import { MessageListComponent } from './components/message-list/message-list.com
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ElaboratePaymentComponent } from './components/payments/elaborate-payment/elaborate-payment.component';
+import { EventListComponent } from './components/event-list/event-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
@@ -44,6 +45,10 @@ const appRoutes: Routes = [
     path: 'elaborate/:groupId',
     component: ElaboratePaymentComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'events',
+    component: EventListComponent
   }
 ];
 
