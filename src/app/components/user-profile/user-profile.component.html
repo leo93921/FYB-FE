@@ -17,9 +17,9 @@
 
     <!-- {% TODO if feedback.voto is not null %} -->
     <p class="feedP">
-      <rating [(ngModel)]="starsCount" [readonly]="true"
+      <rating [(ngModel)]="profile.feedbackValue" [readonly]="true"
       [titles]="['Assolutamente non soddisfatto', 'Poco soddisfatto', 'Soddisfatto', 'Molto soddisfatto', 'Eccellente']"></rating>
-      <span>&nbsp;(98)</span>
+      <span>&nbsp;({{profile.feedbackCount}})</span>
     </p>
 
     <!-- TODO if feedback rilasciabile  -->

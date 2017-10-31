@@ -22,7 +22,6 @@ export class UserProfileComponent implements OnInit {
   public youtubeVideoUrl: any;
   public playlist: PlayListItem[];
   public communication: Communication = new Communication();
-  public starsCount = 2.5;
   public feedbackItem: any = {};
   @ViewChild('feedbackModal') private feedbackModal: any;
 
@@ -90,6 +89,12 @@ export class UserProfileComponent implements OnInit {
     this._userManager
       .saveFeedback(this.userId, this.feedbackItem)
       .subscribe(res => {
+        const prevTotalFeed =
+          this.profile.feedbackValue * this.profile.feedbackCount;
+        this.profile.feedbackCount++;
+        this.profile.feedbackValue =
+          (prevTotalFeed + this.feedbackItem.value) /
+          this.profile.feedbackCount;
         this.feedbackModal.dismiss();
       });
   }
