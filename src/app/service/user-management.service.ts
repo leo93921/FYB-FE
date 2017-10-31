@@ -34,4 +34,9 @@ export class UserManagementService {
     const url = `${this.urlBase}${userId}`;
     return this._http.get(url).map(res => res.json());
   }
+
+  public saveFeedback(toWho: string, feedback: any): Observable<any> {
+    const url = `${Constants.API_BASE}feedback/${toWho}`;
+    return this._http.put(url, feedback).map(res => res.json());
+  }
 }

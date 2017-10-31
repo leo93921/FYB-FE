@@ -3,22 +3,28 @@
     <img src="assets/people-eiffel-tower-lights-night.jpg" alt="First slide">
     <ng-template *ngTemplateOutlet="user_info"></ng-template>
   </slide>
-  <slide>
-    <img src="assets/pexels-photo-173523.jpg" alt="Third slide">
-    <ng-template *ngTemplateOutlet="user_info"></ng-template>
-  </slide>
+  <!-- <slide>
+  <img src="assets/pexels-photo-173523.jpg" alt="Third slide">
+  <ng-template *ngTemplateOutlet="user_info"></ng-template>
+</slide> -->
 </carousel>
 
 <ng-template #user_info>
   <div class="carousel-caption">
     <h3>{{ profile.name }}</h3>
     <h4>{{ profile.description }}</h4>
-    <p><i class="fa fa-phone" aria-hidden="true"></i> {{ profile.phone }}<span class="seperate-h"></span><!-- {% if utente.tipo is constant('AppBundle\\Entity\\UserType::GRUPPO')  %} --><i class="fa fa-usd" aria-hidden="true"></i> {{ priceBand }} €</p>
+    <p><i class="fa fa-phone" aria-hidden="true"></i> {{ profile.phone }}<span class="seperate-h"></span><!-- {% TODO if utente.tipo is constant('AppBundle\\Entity\\UserType::GRUPPO')  %} --><i class="fa fa-usd" aria-hidden="true"></i> {{ priceBand }} €</p>
 
-    <!-- {% if feedback.voto is not null %} -->
-    <p><i class="fa fa-comment-o" aria-hidden="true"></i> 3.97<span class="seperate-h"></span><i class="fa fa-users" aria-hidden="true"></i> 98</p>
-    <!-- form comunicazione -->
-    <!-- {% if ingaggiabile == true %} -->
+    <!-- {% TODO if feedback.voto is not null %} -->
+    <p class="feedP">
+      <rating [(ngModel)]="starsCount" [readonly]="true"
+      [titles]="['Assolutamente non soddisfatto', 'Poco soddisfatto', 'Soddisfatto', 'Molto soddisfatto', 'Eccellente']"></rating>
+      <span>&nbsp;(98)</span>
+    </p>
+
+    <!-- TODO if feedback rilasciabile  -->
+    <button type="button" class="btn btn-success btn-outline btn-engage" (click)="feedbackModal.open()">Lascia feedback</button>
+    <!-- {% TODO if ingaggiabile == true %} -->
     <button type="button" class="btn btn-success btn-outline btn-engage" (click)="modal.open()">Ingaggia</button>
   </div>
 </ng-template>
@@ -102,5 +108,33 @@
   <bs-modal-footer>
     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
     <button type="button" class="btn btn-primary" (click)="sendMessage()" [disabled]="f.invalid">Carica</button>
+  </bs-modal-footer>
+</bs-modal>
+
+<bs-modal #feedbackModal>
+  <bs-modal-header [showDismiss]="true">
+    <h4 class="modal-title">
+      <span>Lascia un feedback</span>
+    </h4>
+  </bs-modal-header>
+  <bs-modal-body>
+    <form #f1="ngForm" novalidate>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label>Testo</label>
+          <textarea name="feedText" rows="5" [(ngModel)]="feedbackItem.text" required class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label>Voto</label>
+          <rating name="feedValue" [(ngModel)]="feedbackItem.value" [required]="true" [titles]="['Assolutamente non soddisfatto', 'Poco soddisfatto', 'Soddisfatto', 'Molto soddisfatto', 'Eccellente']"></rating>
+        </div>
+      </div>
+    </form>
+  </bs-modal-body>
+  <bs-modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
+    <button type="button" class="btn btn-primary" (click)="saveFeedback()" [disabled]="f1.invalid">Salva feedback</button>
   </bs-modal-footer>
 </bs-modal>

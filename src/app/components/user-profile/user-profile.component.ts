@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -22,6 +22,9 @@ export class UserProfileComponent implements OnInit {
   public youtubeVideoUrl: any;
   public playlist: PlayListItem[];
   public communication: Communication = new Communication();
+  public starsCount = 2.5;
+  public feedbackItem: any = {};
+  @ViewChild('feedbackModal') private feedbackModal: any;
 
   constructor(
     private _userManager: UserManagementService,
@@ -80,6 +83,14 @@ export class UserProfileComponent implements OnInit {
       .sendCommunication(this.communication)
       .subscribe(res => {
         this._router.navigateByUrl(`/messages/${res}`);
+      });
+  }
+
+  public saveFeedback(): void {
+    this._userManager
+      .saveFeedback(this.userId, this.feedbackItem)
+      .subscribe(res => {
+        this.feedbackModal.dismiss();
       });
   }
 }

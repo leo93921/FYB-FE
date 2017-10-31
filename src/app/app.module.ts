@@ -8,6 +8,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RoutingModule } from './routing.module';
 import { ToastyModule, ToastyService } from 'ng2-toasty';
 import { BsModalModule } from 'ng2-bs3-modal';
+import { RatingModule } from 'ngx-rating';
 
 import { AuthGuardService } from './service/shared/auth-guard.service';
 import { CustomHttpService } from './service/custom-http.service';
@@ -63,7 +64,8 @@ import { EventListComponent } from './components/event-list/event-list.component
     CarouselModule.forRoot(),
     ToastyModule.forRoot(),
     BsModalModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    RatingModule
   ],
   providers: [
     {

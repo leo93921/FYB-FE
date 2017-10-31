@@ -25,3 +25,13 @@
 .btn-engage {
   margin-bottom: 10px;
 }
+.feedP {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+.feedP rating,
+.feedP span {
+  display: table-cell;
+  vertical-align: middle;
+}
