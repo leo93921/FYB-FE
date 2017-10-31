@@ -1,0 +1,36 @@
+<div class="card" style="width: 20rem;" *ngFor="let item of actions">
+  <div class="card-body">
+    <h4 class="card-title">{{item.userName}}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">{{item.eventName}} - {{item.eventDate | toDate | date:'dd/MM/yyyy'}}</h6>
+    <p class="card-text">Lascia un feedback per l'evento cliccando sul link di seguito</p>
+    <a (click)="openModal(item)" class="card-link">Lascia feedback</a>
+  </div>
+</div>
+
+<bs-modal #feedbackModal>
+  <bs-modal-header [showDismiss]="true">
+    <h4 class="modal-title">
+      <span>Lascia un feedback</span>
+    </h4>
+  </bs-modal-header>
+  <bs-modal-body>
+    <form #f1="ngForm" novalidate>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label>Testo</label>
+          <textarea name="feedText" rows="5" [(ngModel)]="feedbackItem.text" required class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label>Voto</label>
+          <rating name="feedValue" [(ngModel)]="feedbackItem.value" [required]="true" [titles]="['Assolutamente non soddisfatto', 'Poco soddisfatto', 'Soddisfatto', 'Molto soddisfatto', 'Eccellente']"></rating>
+        </div>
+      </div>
+    </form>
+  </bs-modal-body>
+  <bs-modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
+    <button type="button" class="btn btn-primary" (click)="saveFeedback()" [disabled]="f1.invalid">Salva feedback</button>
+  </bs-modal-footer>
+</bs-modal>

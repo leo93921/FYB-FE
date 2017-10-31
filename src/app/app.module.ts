@@ -34,6 +34,7 @@ import { MessageService } from './service/message.service';
 import { ElaboratePaymentComponent } from './components/payments/elaborate-payment/elaborate-payment.component';
 import { ReplacePipe } from './pipes/replace.pipe';
 import { EventListComponent } from './components/event-list/event-list.component';
+import { ActionListComponent } from './components/action-list/action-list.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { EventListComponent } from './components/event-list/event-list.component
     HomepageComponent,
     ElaboratePaymentComponent,
     ReplacePipe,
-    EventListComponent
+    EventListComponent,
+    ActionListComponent
   ],
   imports: [
     BrowserModule,

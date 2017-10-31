@@ -3,10 +3,10 @@
     <img src="assets/people-eiffel-tower-lights-night.jpg" alt="First slide">
     <ng-template *ngTemplateOutlet="user_info"></ng-template>
   </slide>
-  <!-- <slide>
+  <slide>
   <img src="assets/pexels-photo-173523.jpg" alt="Third slide">
   <ng-template *ngTemplateOutlet="user_info"></ng-template>
-</slide> -->
+</slide>
 </carousel>
 
 <ng-template #user_info>
@@ -22,8 +22,6 @@
       <span>&nbsp;({{profile.feedbackCount}})</span>
     </p>
 
-    <!-- TODO if feedback rilasciabile  -->
-    <button type="button" class="btn btn-success btn-outline btn-engage" (click)="feedbackModal.open()">Lascia feedback</button>
     <!-- {% TODO if ingaggiabile == true %} -->
     <button type="button" class="btn btn-success btn-outline btn-engage" (click)="modal.open()">Ingaggia</button>
   </div>
@@ -108,33 +106,5 @@
   <bs-modal-footer>
     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
     <button type="button" class="btn btn-primary" (click)="sendMessage()" [disabled]="f.invalid">Carica</button>
-  </bs-modal-footer>
-</bs-modal>
-
-<bs-modal #feedbackModal>
-  <bs-modal-header [showDismiss]="true">
-    <h4 class="modal-title">
-      <span>Lascia un feedback</span>
-    </h4>
-  </bs-modal-header>
-  <bs-modal-body>
-    <form #f1="ngForm" novalidate>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <label>Testo</label>
-          <textarea name="feedText" rows="5" [(ngModel)]="feedbackItem.text" required class="form-control"></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <label>Voto</label>
-          <rating name="feedValue" [(ngModel)]="feedbackItem.value" [required]="true" [titles]="['Assolutamente non soddisfatto', 'Poco soddisfatto', 'Soddisfatto', 'Molto soddisfatto', 'Eccellente']"></rating>
-        </div>
-      </div>
-    </form>
-  </bs-modal-body>
-  <bs-modal-footer>
-    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
-    <button type="button" class="btn btn-primary" (click)="saveFeedback()" [disabled]="f1.invalid">Salva feedback</button>
   </bs-modal-footer>
 </bs-modal>

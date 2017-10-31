@@ -15,6 +15,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ElaboratePaymentComponent } from './components/payments/elaborate-payment/elaborate-payment.component';
 import { EventListComponent } from './components/event-list/event-list.component';
+import { ActionListComponent } from './components/action-list/action-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
@@ -49,6 +50,11 @@ const appRoutes: Routes = [
   {
     path: 'events',
     component: EventListComponent
+  },
+  {
+    path: 'actions',
+    component: ActionListComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 
