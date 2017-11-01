@@ -1,11 +1,16 @@
-<div class="card" style="width: 20rem;" *ngFor="let item of actions">
-  <div class="card-body">
-    <h4 class="card-title">{{item.userName}}</h4>
-    <h6 class="card-subtitle mb-2 text-muted">{{item.eventName}} - {{item.eventDate | toDate | date:'dd/MM/yyyy'}}</h6>
-    <p class="card-text">Lascia un feedback per l'evento cliccando sul link di seguito</p>
-    <a (click)="openModal(item)" class="card-link">Lascia feedback</a>
+<ng-container *ngIf="actions.length > 0; else no_record_found">
+  <div class="card" style="width: 20rem;" *ngFor="let item of actions">
+    <div class="card-body">
+      <h4 class="card-title">{{item.userName}}</h4>
+      <h6 class="card-subtitle mb-2 text-muted">{{item.eventName}} - {{item.eventDate | toDate | date:'dd/MM/yyyy'}}</h6>
+      <p class="card-text">Lascia un feedback per l'evento cliccando sul link di seguito</p>
+      <a (click)="openModal(item)" class="card-link">Lascia feedback</a>
+    </div>
   </div>
-</div>
+</ng-container>
+<ng-template #no_record_found>
+  Nessun elemento trovato
+</ng-template>
 
 <bs-modal #feedbackModal>
   <bs-modal-header [showDismiss]="true">
