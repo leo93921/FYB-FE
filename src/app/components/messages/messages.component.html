@@ -75,6 +75,9 @@
               </div>
               <div class="col-md-12">
                 <div class="text-right">
+                  <div class="overlay" *ngIf="redirectingToPaypal">
+                    <app-loading-display style="display: table; height: 100%; width: 100%"></app-loading-display>
+                  </div>
                   <button type="button" class="btn btn-danger btn-outline" (click)="approve()" name="button">Effettua pagamento</button>
                 </div>
               </div>

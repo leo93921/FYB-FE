@@ -25,6 +25,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   public anOfferExist: boolean;
   public isAGroup: boolean;
   public messagingUser: string;
+  public redirectingToPaypal: boolean = false;
 
   // TODO Add the subscriptions
   private subscriptions: Subscription[] = [];
@@ -151,6 +152,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   public approve(): void {
     this._eventService.approve(this.groupId).subscribe(res => {
+      this.redirectingToPaypal = true;
       window.location.href = res;
     });
   }
