@@ -35,6 +35,7 @@ import { ElaboratePaymentComponent } from './components/payments/elaborate-payme
 import { ReplacePipe } from './pipes/replace.pipe';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { ActionListComponent } from './components/action-list/action-list.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ActionListComponent } from './components/action-list/action-list.compon
     ElaboratePaymentComponent,
     ReplacePipe,
     EventListComponent,
-    ActionListComponent
+    ActionListComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

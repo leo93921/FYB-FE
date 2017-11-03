@@ -16,6 +16,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { ElaboratePaymentComponent } from './components/payments/elaborate-payment/elaborate-payment.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { ActionListComponent } from './components/action-list/action-list.component';
+import { SearchComponent } from './components/search/search.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
@@ -55,6 +56,10 @@ const appRoutes: Routes = [
     path: 'actions',
     component: ActionListComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   }
 ];
 

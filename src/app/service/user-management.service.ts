@@ -44,4 +44,9 @@ export class UserManagementService {
     const url = `${Constants.API_BASE}feedback/to-be-left`;
     return this._http.get(url).map(res => res.json());
   }
+
+  public getCurrentPosition(): Observable<any> {
+    const url = `${this.urlBase}current-position`;
+    return this._http.get(url).map(res => res.text());
+  }
 }

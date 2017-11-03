@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <form #f="ngForm">
+      <div class="col-md-4 form-group">
+        <label for="keywords">Parole chiave:</label>
+        <input type="text" name="keywords" id="keywords" class="form-control" [(ngModel)]="searchObject.keywords">
+      </div>
+      <div class="col-md-2 form-group">
+          <label for="type">Tipo</label>
+          <select name="type" id="type" [(ngModel)]="searchObject.type" class="form-control">
+            <option value="0" disabled="">Seleziona</option>
+            <option value="1">Locale</option>
+            <option value="2">Gruppo</option>
+            <option value="0" disabled="">Visualizza tutti</option>
+          </select>
+        </div>
+      <div class="col-md-2 form-group">
+        <label for="position">Posizione:</label>
+        <div class="input-group">
+          <input type="text" name="position" id="position" class="form-control" [(ngModel)]="address">
+          <div class="input-group-btn">
+            <button class="btn btn-default" (click)="getCurrentPosition()">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 form-group">
+        <label for="max-distance">Entro</label>
+        <select name="max-distance" id="max-distance" [(ngModel)]="searchObject.maxDistance" class="form-control">
+          <option value="0" disabled="">Seleziona</option>            
+          <option value="10">10 km</option>
+          <option value="25">25 km</option>
+          <option value="50">50 km</option>
+          <option value="100">100 km</option>
+          <option value="0">Visualizza tutti</option>
+        </select>
+      </div>
+      <div class="col-md-1 col-md-offset-1">
+        <label>&nbsp;</label>
+        <button class="btn btn-default" (click)="searchResults()">Cerca</button>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {{ results | json }}
+    </div>
+  </div>
+</div>
