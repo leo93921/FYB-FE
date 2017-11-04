@@ -40,4 +40,9 @@ export class EventService {
     const url = `${this.urlBase}for-user/${eventId}`;
     return this._http.get(url).map(res => res.json());
   }
+
+  public getEventsForUser(): Observable<any> {
+    const url = `${this.urlBase}for-user`;
+    return this._http.get(url).map(res => res.json());
+  }
 }

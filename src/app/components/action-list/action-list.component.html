@@ -1,16 +1,47 @@
-<ng-container *ngIf="actions.length > 0; else no_record_found">
-  <div class="card" style="width: 20rem;" *ngFor="let item of actions">
-    <div class="card-body">
-      <h4 class="card-title">{{item.userName}}</h4>
-      <h6 class="card-subtitle mb-2 text-muted">{{item.eventName}} - {{item.eventDate | toDate | date:'dd/MM/yyyy'}}</h6>
-      <p class="card-text">Lascia un feedback per l'evento cliccando sul link di seguito</p>
-      <a (click)="openModal(item)" class="card-link">Lascia feedback</a>
+<div class="cover">
+  <img src="assets/people_dancing.jpeg" alt="Copertina con gente che balla" class="img-responsive">
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 margin-y">
+      <h2 class="text-uppercase">Eventi</h2>
     </div>
   </div>
-</ng-container>
-<ng-template #no_record_found>
-  Nessun elemento trovato
-</ng-template>
+  <hr>
+  <ng-container *ngIf="actions.length > 0; else no_record_found">
+    <ng-container *ngFor="let item of actions; let last = last">
+      <div class="row margin-tb">
+        <div class="col-md-7">
+          <img src="assets/people-eiffel-tower-lights-night.jpg" class="img-responsive img-event center-block">
+        </div>
+        <div class="col-md-5">
+          <h2 class="event-name" (click)="goToEvent(item)">{{ item.name }}</h2>
+          <p class="address">{{ item.placeAddress }}</p>
+          <p class="address">{{ item.when | toDate | date:'dd MMM \'yy' }}, 19.00 - 20.00</p>
+          <p>{{ item.description }}</p>
+          <span class="event-status" [ngSwitch]="item.status">
+            <ng-container *ngSwitchCase="'ACCEPTED'">Offerta accettata</ng-container>
+            <ng-container *ngSwitchCase="'PAID'">Pagamento effettuato</ng-container>
+            <ng-container *ngSwitchCase="'OFFER_REFUNDED'">Richiesto rimborso</ng-container>
+            <ng-container *ngSwitchDefault="">Attivo</ng-container>
+          </span>
+          <span *ngIf="item.feedbackLeft" class="event-status">Feedback lasciato</span>
+          <hr>
+          <div class="btn-group pull-right" role="group">
+              <button class="btn btn-success btn-outline" routerLink="/messages/{{item.messageGroup}}">Vai ai messaggi</button>
+              <button *ngIf="!(item.feedbackLeft) && (todayDate >= item.when)" class="btn btn-success btn-outline" (click)="openModal(item)">Lascia feedback</button>
+              <button class="btn btn-danger btn-outline">Annulla</button>
+          </div>
+        </div>
+      </div>
+      <hr *ngIf="!last">
+    </ng-container>
+  </ng-container>
+  <ng-template #no_record_found>
+    Nessun elemento trovato
+  </ng-template>
+</div>
 
 <bs-modal #feedbackModal>
   <bs-modal-header [showDismiss]="true">

@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+/* fonts from google */
+@import url('https://fonts.googleapis.com/css?family=Catamaran:700,900|Quattrocento');
+
+body {
+  color: rgb(95, 95, 95);
+}
 app-event,
 app-user-profile {
   position: relative;

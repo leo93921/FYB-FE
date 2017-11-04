@@ -1,0 +1,37 @@
+.cover {
+    position: relative;
+    top: -20px
+}
+
+.cover img {
+    margin: 0px;
+    max-width: 100%;
+    height: auto;
+    max-height: 30%;
+}
+.margin-tb {
+    margin: 3em auto;
+}
+.event-status {
+    color: #d43f3a;
+    background-color: transparent;
+    padding: 6px 12px;
+    border: 1px solid #d43f3a;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.img-event {
+    max-height: 380px;   
+}
+.event-name {
+    color: rgb(95, 95, 95);
+    cursor: pointer;
+}
+.address {
+    color: rgb(158, 158, 158);
+    font-size: 1.3em;
+}
+.event-name, .address {
+    margin-top: 0px;
+}
