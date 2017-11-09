@@ -12,6 +12,7 @@ export class ElaboratePaymentComponent implements OnInit {
   private payerID: string;
   private paymentId: string;
   private messageGroup: string;
+  private fromAction: boolean;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -24,6 +25,7 @@ export class ElaboratePaymentComponent implements OnInit {
       .switchMap((params: Params) => {
         this.payerID = params['PayerID'];
         this.paymentId = params['paymentId'];
+        this.fromAction = params['fromAction'];
         return this._activatedRoute.params;
       })
       .switchMap((params: Params) => {
@@ -36,7 +38,11 @@ export class ElaboratePaymentComponent implements OnInit {
         return this._eventService.executePayment(payInfo);
       })
       .subscribe(res => {
-        this._router.navigateByUrl(`/messages/${this.messageGroup}`);
+        if (this.fromAction) {
+          this._router.navigateByUrl(`/actions`);
+        } else {
+          this._router.navigateByUrl(`/messages/${this.messageGroup}`);
+        }
       });
   }
 }

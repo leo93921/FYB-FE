@@ -14,7 +14,9 @@ export class ActionListComponent implements OnInit {
   private selectedRequest: any;
   public feedbackItem: any = {};
   @ViewChild('feedbackModal') private feedbackModal: any;
+  @ViewChild('paypalModal') private paypalModal: any;
   public todayDate: number = (new Date()).getTime();
+  public redirectingToPaypal: boolean;
 
   constructor(
     private _userManager: UserManagementService,
@@ -49,5 +51,17 @@ export class ActionListComponent implements OnInit {
 
   public goToEvent(item): void {
     this._router.navigateByUrl(`/event/${item.eventId}/${item.name.replace(' ', '-')}`);
+  }
+
+  public approve(): void {
+    this._eventService.approve(this.selectedRequest.messageGroup, true).subscribe(res => {
+      this.redirectingToPaypal = true;
+      window.location.href = res;
+    });
+  }
+
+  public openPayPalModal(item: any): void {
+    this.selectedRequest = item;
+    this.paypalModal.open();
   }
 }

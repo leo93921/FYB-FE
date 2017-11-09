@@ -24,8 +24,8 @@ export class EventService {
     return this._http.put(url, { accept: true }).map(res => res.json());
   }
 
-  public approve(messageGroup: string): Observable<any> {
-    const url = `${this.urlBase}approve/${messageGroup}`;
+  public approve(messageGroup: string, fromAction: boolean = false): Observable<any> {
+    const url = `${this.urlBase}approve/${messageGroup}/${fromAction}`;
     return this._http.get(url).map(res => res.text());
   }
 

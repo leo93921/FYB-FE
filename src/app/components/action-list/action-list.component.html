@@ -22,16 +22,18 @@
           <p>{{ item.description }}</p>
           <span class="event-status" [ngSwitch]="item.status">
             <ng-container *ngSwitchCase="'ACCEPTED'">Offerta accettata</ng-container>
+            <ng-container *ngSwitchCase="'NOT_ACCEPTED'">Offerta non accettata</ng-container>
             <ng-container *ngSwitchCase="'PAID'">Pagamento effettuato</ng-container>
+            <ng-container *ngSwitchCase="'NOT_PAID'">Pagamento non effettuato</ng-container>
             <ng-container *ngSwitchCase="'OFFER_REFUNDED'">Richiesto rimborso</ng-container>
-            <ng-container *ngSwitchDefault="">Attivo</ng-container>
           </span>
           <span *ngIf="item.feedbackLeft" class="event-status">Feedback lasciato</span>
           <hr>
           <div class="btn-group pull-right" role="group">
-              <button class="btn btn-success btn-outline" routerLink="/messages/{{item.messageGroup}}">Vai ai messaggi</button>
-              <button *ngIf="!(item.feedbackLeft) && (todayDate >= item.when)" class="btn btn-success btn-outline" (click)="openModal(item)">Lascia feedback</button>
-              <button class="btn btn-danger btn-outline">Annulla</button>
+            <button class="btn btn-success btn-outline" routerLink="/messages/{{item.messageGroup}}">Vai ai messaggi</button>
+            <button *ngIf="!(item.feedbackLeft) && (todayDate >= item.when) && item.status==='PAID'" class="btn btn-success btn-outline" (click)="openModal(item)">Lascia feedback</button>
+            <button *ngIf="(todayDate < item.when) && item.status==='NOT_PAID'" class="btn btn-success btn-outline" (click)="openPayPalModal(item)">Paga</button>
+            <button class="btn btn-danger btn-outline">Annulla</button>
           </div>
         </div>
       </div>
@@ -70,3 +72,29 @@
     <button type="button" class="btn btn-primary" (click)="saveFeedback()" [disabled]="f1.invalid">Salva feedback</button>
   </bs-modal-footer>
 </bs-modal>
+
+<bs-modal #paypalModal>
+  <bs-modal-header [showDismiss]="true">
+    <h4 class="modal-title">
+      <span>Lascia un feedback</span>
+    </h4>
+  </bs-modal-header>
+  <bs-modal-body>
+    <div class="row">
+      <div class="col-sm-12 form-group">
+        <p>
+          Premendo il pulsante sotto, verrai reindirizzato sul sito di PayPal, che ti chiederà
+          di effettuare il pagamento. Una volta effettuato, verrai reinderizzato su questa pagina.
+        </p>
+      </div>
+    </div>
+  </bs-modal-body>
+  <bs-modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="paypalModal.dismiss()">Annulla</button>
+    <button type="button" class="btn btn-primary" (click)="approve()">Mandami su PayPal</button>
+  </bs-modal-footer>
+</bs-modal>
+
+<div class="overlay" *ngIf="redirectingToPaypal">
+  <app-loading-display style="display: table; height: 100%; width: 100%"></app-loading-display>
+</div>
