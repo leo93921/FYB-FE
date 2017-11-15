@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           this._userRepo.connecterUser = this._userRepo.getCookieValue(
             UserRepoService.USER_EMAIL
           );
-          this._router.navigate([`/profile`]);
+          // this._router.navigate([`/profile`]);
         }
       });
   }

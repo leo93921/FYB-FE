@@ -1,40 +1,335 @@
-<div class="container">
-<div class="section">
-  <div class="row">
-    <div class="col-sm-4 col-xs-12">
-      <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDM3Mi4wNjQgMzcyLjA2NCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzcyLjA2NCAzNzIuMDY0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzY1LjQzNywzNS4zMTJjLTQuMDk2LTIuNTYtOC43MDQtMy41ODQtMTQuMzM2LTMuMDcyYy05LjcyOCwxLjUzNi0xNy45Miw1LjEyLTI1LjYsMTAuNzUyICAgIGMtNi42NTYsNS4xMi0xNC4zMzYsMTEuMjY0LTIzLjA0LDE4LjQzMmMtNC4wOTYsMy41ODQtOC4xOTIsNy4xNjgtMTIuMjg4LDEwLjc1MmMtMi41NiwyLjU2LTUuMTIsNC42MDgtNy42OCw3LjE2OCAgICBjLTIuNTYsMi4wNDgtNC42MDgsMy4wNzItNy42OCwyLjU2Yy0xLjUzNi0wLjUxMi0zLjU4NC0xLjAyNC01LjYzMi0xLjUzNmwtOTUuNzQ0LTM1Ljg0Yy0zLjA3Mi0xLjAyNC02LjE0NC0yLjA0OC05LjcyOC0zLjA3MiAgICBjLTcuMTY4LTIuMDQ4LTEyLjI4OCwwLTE1LjM2LDIuNTZjLTUuNjMyLDQuMDk2LTEwLjI0LDkuMjE2LTEzLjMxMiwxNC44NDhjLTMuNTg0LDUuNjMyLTIuNTYsMTEuNzc2LDIuNTYsMTYuMzg0ICAgIGMyLjA0OCwyLjA0OCw0LjA5NiwzLjU4NCw1LjYzMiw0LjYwOGMxNy40MDgsMTIuMjg4LDM1LjMyOCwyNC4wNjQsNTIuNzM2LDM2LjM1MmM2LjY1Niw0LjYwOCwxMi44LDguNzA0LDE3LjQwOCwxNC4zMzYgICAgYzEuMDI0LDEuNTM2LDIuMDQ4LDIuNTYsMy4wNzIsNC4wOTZsLTMzLjI4LDMxLjc0NGMtMy41ODQsMy41ODQtNy4xNjgsNi42NTYtMTAuNzUyLDEwLjI0Yy0wLjUxMiwwLTEuMDI0LTAuNTEyLTEuNTM2LTAuNTEyICAgIGwtNS42MzItMi41NmMtNC42MDgtMi4wNDgtOC43MDQtNC42MDgtMTMuMzEyLTYuNjU2Yy01LjYzMi0yLjU2LTExLjc3Ni0yLjA0OC0xNi4zODQsMi4wNDhjLTIuNTYsMi4wNDgtNS4xMiw0LjYwOC03LjY4LDcuMTY4ICAgIGMtNC42MDgsNC42MDgtNS4xMiwxMC4yNC0xLjAyNCwxNS4zNmMxLjAyNCwxLjUzNiwyLjA0OCwyLjU2LDMuMDcyLDMuNTg0bDkuNzI4LDEyLjI4OGMxMS4yNjQsMTQuODQ4LDIzLjA0LDI5LjY5NiwzNC44MTYsNDQuMDMyICAgIGMxLjUzNiwyLjA0OCwzLjA3MiwzLjU4NCw1LjEyLDQuNjA4YzIuMDQ4LDEuMDI0LDYuMTQ0LDMuNTg0LDExLjI2NCwyLjA0OGM2LjE0NC0yLjA0OCwxMC43NTItNi4xNDQsMTIuOC0xMi4yODggICAgYzIuMDQ4LTUuMTIsMi41Ni0xMC43NTIsMC41MTItMTYuODk2bC0xLjAyNC00LjYwOGMtMS4wMjQtNC4wOTYtMi4wNDgtOC4xOTItMy4wNzItMTIuMjg4ICAgIGMxMy44MjQtMTAuNzUyLDI3LjY0OC0yMC45OTIsNDAuOTYtMzEuNzQ0bDYuNjU2LTUuMTJsMS41MzYsMi41NmMzLjU4NCw1LjYzMiw2LjY1NiwxMS4yNjQsOC43MDQsMTcuNDA4bDIzLjU1Miw2MC40MTYgICAgYzEuNTM2LDMuNTg0LDIuNTYsNy4xNjgsNC4wOTYsMTAuMjRjMi41Niw1LjYzMiw2LjY1Niw4LjcwNCwxMS43NzYsOC43MDRjMi4wNDgsMCw0LjA5Ni0wLjUxMiw2LjE0NC0xLjUzNiAgICBjMS41MzYtMC41MTIsMy4wNzItMS4wMjQsNC4wOTYtMi4wNDhjOC4xOTItNC4wOTYsMTMuMzEyLTkuNzI4LDE1LjM2LTE3LjQwOGMxLjUzNi02LjE0NCwxLjAyNC0xMS43NzYsMC41MTItMTUuODcybC0xMi4yODgtODkuNiAgICBjLTEuMDI0LTcuMTY4LTIuMDQ4LTE0Ljg0OC0zLjA3Mi0yMi4wMTZjLTAuNTEyLTMuNTg0LDAuNTEyLTUuNjMyLDMuMDcyLTcuNjhsMTAuNzUyLTkuMjE2ICAgIGM4LjcwNC03LjE2OCwxNi44OTYtMTQuMzM2LDI1LjYtMjEuNTA0YzcuMTY4LTYuMTQ0LDExLjc3Ni0xMS43NzYsMTUuODcyLTE3LjkyYzMuMDcyLTQuNjA4LDYuMTQ0LTEwLjI0LDcuNjgtMTYuMzg0ICAgIEMzNzMuNjI5LDQ2LjU3NiwzNzEuMDY5LDM5LjQwOCwzNjUuNDM3LDM1LjMxMnogTTM2MS4zNDEsNTEuMTg0Yy0xLjUzNiw1LjEyLTQuMDk2LDkuNzI4LTYuNjU2LDEzLjgyNCAgICBjLTMuMDcyLDUuMTItNy42OCwxMC4yNC0xMy44MjQsMTUuMzZjLTguMTkyLDcuMTY4LTE2Ljg5NiwxNC4zMzYtMjUuNiwyMS41MDRsLTEwLjI0LDguNzA0ICAgIGMtNS42MzIsNC4wOTYtOC4xOTIsMTAuMjQtNy4xNjgsMTcuNDA4YzEuMDI0LDcuMTY4LDIuMDQ4LDE0LjMzNiwzLjA3MiwyMi4wMTZsMTIuMjg4LDg5LjZjMC41MTIsNS4xMiwwLjUxMiw4LjcwNC0wLjUxMiwxMS43NzYgICAgYy0xLjUzNiw0LjYwOC00LjYwOCw4LjE5Mi05LjcyOCwxMC43NTJjLTEuMDI0LDAuNTEyLTIuMDQ4LDEuMDI0LTMuNTg0LDEuNTM2Yy0zLjA3MiwxLjAyNC00LjA5NiwwLjUxMi01LjEyLTIuMDQ4ICAgIGMtMS41MzYtMy4wNzItMi41Ni02LjY1Ni00LjA5Ni0xMC4yNGwtMjIuNTI4LTYwLjQxNmMtMi41Ni02LjY1Ni02LjE0NC0xMi44LTkuNzI4LTE4Ljk0NGwtMy4wNzItNS4xMmwtNC42MDgtNi42NTYgICAgbC0xNS44NzIsMTEuNzc2Yy0xNC4zMzYsMTAuNzUyLTI4LjY3MiwyMi4wMTYtNDIuNDk2LDMyLjc2OGMtMy41ODQsMi41Ni0zLjA3Miw1LjYzMi0yLjU2LDcuNjggICAgYzEuMDI0LDQuNjA4LDIuNTYsOS4yMTYsMy41ODQsMTMuODI0bDEuMDI0LDQuNjA4YzEuMDI0LDQuMDk2LDEuMDI0LDcuNjgtMC41MTIsMTAuNzUyYy0xLjUzNiwzLjA3Mi0zLjU4NCw1LjEyLTcuMTY4LDYuMTQ0ICAgIGMwLDAtMS4wMjQsMC0yLjU2LTEuMDI0Yy0xLjAyNC0wLjUxMi0yLjA0OC0xLjUzNi0yLjU2LTIuNTZjLTExLjc3Ni0xNC44NDgtMjMuMDQtMjkuMTg0LTM0LjMwNC00NC4wMzJsLTkuNzI4LTEyLjI4OCAgICBjLTEuMDI0LTEuMDI0LTEuNTM2LTIuMDQ4LTIuNTYtMy41ODRjLTAuNTEyLTAuNTEyLTAuNTEyLTEuMDI0LTAuNTEyLTEuMDI0czAuNTEyLTAuNTEyLDEuMDI0LTEuMDI0ICAgIGMyLjA0OC0yLjA0OCw0LjYwOC00LjYwOCw2LjY1Ni02LjE0NGMxLjUzNi0xLjUzNiwzLjU4NC0xLjUzNiw1LjYzMi0wLjUxMmM0LjYwOCwyLjA0OCw4LjcwNCw0LjA5NiwxMy4zMTIsNi42NTZsNS42MzIsMi41NiAgICBjMS4wMjQsMC41MTIsMi4wNDgsMS4wMjQsMy4wNzIsMS41MzZjMi41NiwxLjUzNiw1LjYzMiwxLjAyNCw4LjE5Mi0xLjAyNGM0LjA5Ni00LjA5Niw4LjE5Mi03LjY4LDEyLjI4OC0xMS43NzZsMzUuMzI4LTMzLjI4ICAgIGw0LjA5Ni00LjA5NmwtMi41Ni0zLjU4NGMtMC41MTItMS4wMjQtMS4wMjQtMS41MzYtMS41MzYtMi41NmMtMS41MzYtMi4wNDgtMi41Ni00LjA5Ni00LjA5Ni01LjYzMiAgICBjLTUuNjMyLTYuNjU2LTEyLjI4OC0xMS43NzYtMTkuNDU2LTE2LjM4NGMtMTcuNDA4LTExLjc3Ni0zNS4zMjgtMjQuMDY0LTUyLjczNi0zNi4zNTJjLTEuNTM2LTEuMDI0LTMuMDcyLTIuMDQ4LTQuNjA4LTMuNTg0ICAgIGMtMS41MzYtMS41MzYtMS41MzYtMi4wNDgtMC41MTItMy4wNzJjMi41Ni00LjYwOCw2LjY1Ni04LjcwNCwxMS4yNjQtMTIuMjg4YzEuMDI0LTEuMDI0LDIuNTYtMS41MzYsNi4xNDQtMC41MTIgICAgYzMuNTg0LDEuMDI0LDYuNjU2LDIuMDQ4LDkuMjE2LDMuMDcybDk1Ljc0NCwzNS44NGMyLjU2LDEuMDI0LDUuMTIsMS41MzYsNy4xNjgsMi4wNDhjNS42MzIsMS4wMjQsMTEuMjY0LTAuNTEyLDE1Ljg3Mi00LjYwOCAgICBjMi41Ni0yLjU2LDUuMTItNC42MDgsNy42OC03LjE2OGM0LjA5Ni0zLjU4NCw4LjE5Mi03LjE2OCwxMi4yODgtMTAuNzUyYzguNzA0LTcuMTY4LDE1Ljg3Mi0xMy4zMTIsMjIuNTI4LTE4LjQzMiAgICBjNi4xNDQtNC42MDgsMTMuMzEyLTcuNjgsMjAuOTkyLTguNzA0YzIuNTYtMC41MTIsNC42MDgsMCw2LjY1NiwxLjAyNEMzNjEuMzQxLDQ1LjA0LDM2Mi4zNjUsNDguMTEyLDM2MS4zNDEsNTEuMTg0eiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTEzNi4wNjEsMjI4Ljg0OGMtMS41MzYtMi4wNDgtNS4xMi0yLjU2LTcuMTY4LTEuMDI0TDEuOTE3LDMyNC41OTJjLTIuMDQ4LDEuNTM2LTIuNTYsNS4xMi0xLjAyNCw3LjE2OCAgICBjMS4wMjQsMS41MzYsMi41NiwyLjA0OCw0LjA5NiwyLjA0OGMxLjAyNCwwLDIuMDQ4LTAuNTEyLDMuMDcyLTEuMDI0bDEyNi45NzYtOTYuNzY4ICAgIEMxMzcuNTk3LDIzNC40OCwxMzcuNTk3LDIzMS40MDgsMTM2LjA2MSwyMjguODQ4eiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTE1Mi45NTcsMjUyLjkxMmMtMi4wNDgtMi4wNDgtNS4xMi0yLjU2LTcuNjgtMS4wMjRMNjcuOTY1LDMxMS4yOGMtMi4wNDgsMS41MzYtMi41Niw1LjEyLTEuMDI0LDcuMTY4ICAgIGMxLjAyNCwxLjUzNiwyLjU2LDIuMDQ4LDQuMDk2LDIuMDQ4YzEuMDI0LDAsMi4wNDgtMC41MTIsMy4wNzItMS4wMjRsNzcuODI0LTU5LjM5MiAgICBDMTUzLjk4MSwyNTguNTQ0LDE1NC40OTMsMjU0Ljk2LDE1Mi45NTcsMjUyLjkxMnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik02MS44MjEsMzIyLjAzMmMtMS41MzYtMi4wNDgtNS4xMi0yLjU2LTcuMTY4LTEuMDI0bC0xMi44LDkuNzI4Yy0yLjA0OCwxLjUzNi0yLjU2LDUuMTItMS4wMjQsNy4xNjggICAgYzEuMDI0LDEuNTM2LDIuNTYsMi4wNDgsNC4wOTYsMi4wNDhjMS4wMjQsMCwyLjA0OC0wLjUxMiwzLjA3Mi0xLjAyNGwxMi44LTkuNzI4QzYyLjg0NSwzMjcuNjY0LDYzLjM1NywzMjQuMDgsNjEuODIxLDMyMi4wMzJ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDQuOTI1LDI2NC42ODhjLTEuNTM2LTIuMDQ4LTUuMTItMi41Ni03LjE2OC0xLjAyNGwtMTIuOCw5LjcyOGMtMi4wNDgsMS41MzYtMi41Niw1LjEyLTEuMDI0LDcuMTY4ICAgIGMxLjAyNCwxLjUzNiwyLjU2LDIuMDQ4LDQuMDk2LDIuMDQ4YzEuMDI0LDAsMi4wNDgtMC41MTIsMy4wNzItMS4wMjRsMTIuOC05LjcyOEM0NS45NDksMjcwLjMyLDQ2LjQ2MSwyNjYuNzM2LDQ0LjkyNSwyNjQuNjg4eiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTExOS4xNjUsMjA4Ljg4Yy0xLjUzNi0yLjA0OC01LjEyLTIuNTYtNy4xNjgtMS4wMjRsLTYwLjkyOCw0Ni4wOGMtMi4wNDgsMS41MzYtMi41Niw1LjEyLTEuMDI0LDcuMTY4ICAgIGMxLjAyNCwxLjAyNCwyLjU2LDIuMDQ4LDQuMDk2LDIuMDQ4YzEuMDI0LDAsMi4wNDgtMC41MTIsMy4wNzItMS4wMjRsNjAuOTI4LTQ2LjA4ICAgIEMxMjAuMTg5LDIxNC41MTIsMTIwLjcwMSwyMTAuOTI4LDExOS4xNjUsMjA4Ljg4eiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" class="img img-responsive img-centered" />
-    </div>
-    <div class="col-sm-8 col-xs-12">
-      <h1>Benvenuto!</h1>
-      <p>Ciao, ti diamo il benvenuto sulla nostra piattaforma nuova di zecca!</p>
-      <p>Entra nel mondo di <em>Find Your Band</em> ed entra a far parte di una
-         community composta esclusivamente da proprietari di locali e gruppi musicali.</p>
-    </div>
+<div class="directify_fn_all_listings_wrap index10 index30">
+  <div class="directify_fn_all_listings_bg">
+    <div class="overlay_color"></div>
+    <div class="overlay_image"></div>
   </div>
-  <div class="row margin-top">
-    <div class="col-sm-8 col-xs-12">
-      <h2>Sei un gruppo musicale?</h2>
-      <p>Su Find Your Band abbiamo a cuore i gruppi musicali e le band che si iscrivono, infatti li tuteliamo
-      con la massima attenzione, in modo tale da evitare guai.</p>
-      <p>Nel momento in cui siete scelti da un titolare di un locale per organizzare un evento, a lui sar&agrave;
-       chiesto di pagare il prezzo accordato prima dell'evento, in modo tale da evitare qualsiasi problema
-       relativo al pagamento.</p>
-    </div>
-    <div class="col-sm-4 col-xs-12">
-      <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQzMS41NCA0MzEuNTQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQzMS41NCA0MzEuNTQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBkPSJNNDMxLjU0LDExMi42NzljMC0zLjQ5NS0xLjM1Ny02Ljc3Ny0zLjgyMi05LjI0M2MtNS4wOTItNS4wOTItMTMuMzc3LTUuMDkyLTE4LjQ2OSwwbC0yNC4xNjksMjQuMTY5ICBjLTUuMzE3LTE5LjUzNC0xMi4yNTgtMzcuMjQ3LTIwLjUtNTIuNzU0aDYuNzg5YzIuMjA5LDAsNC0xLjc5MSw0LTRzLTEuNzkxLTQtNC00aC0xMS4yNzEgIEMzMzYuOTcsMjcuNjY0LDMwNS4wODEsNC41MjgsMjcwLjcxNSw0LjQ3NGMtMC4wMzktMC4wMDEtMTQ0LjgzNi0wLjAxMi0xNDQuODM2LTAuMDEyYy0zMy45NDUsMC02NS42OTgsMjIuMTU2LTg5LjQ0Niw2Mi4zODggIEgyNS44NjRjLTIuMjA5LDAtNCwxLjc5MS00LDRzMS43OTEsNCw0LDRoNi4wNzlDMTEuMjk4LDExMy42MDMsMCwxNjMuMjQzLDAsMjE1Ljc3NWMwLDUyLjUyOCwxMS4yOTgsMTAyLjE2MywzMS45NDIsMTQwLjkxNWgtNi4wNzggIGMtMi4yMDksMC00LDEuNzkxLTQsNHMxLjc5MSw0LDQsNGgxMC41NjdjMjMuNzQ4LDQwLjIzMiw1NS41MDMsNjIuMzg4LDg5LjQ0Nyw2Mi4zODhIMjcwLjZjMC4wMDMsMCwwLjAwNi0wLjAwMiwwLjAxLTAuMDAyICBjMzMuOTQtMC4wMDcsNjUuNjktMjIuMTYxLDg5LjQzOC02Mi4zODdoMTEuMzIyYzIuMjA5LDAsNC0xLjc5MSw0LTRzLTEuNzkxLTQtNC00aC02LjgzMiAgYzIwLjY0OC0zOC43NTIsMzEuOTQ3LTg4LjM4OCwzMS45NDctMTQwLjkxNGMwLTE5LjY3OC0xLjYyLTM5LjEyNS00Ljc4NC01Ny44NTJsMzYuMDE3LTM2LjAxOCAgQzQzMC4xOTYsMTE5LjQyNyw0MzEuNTU0LDExNi4xNDUsNDMxLjU0LDExMi42Nzl6IE0zMzUuNzk5LDQ2LjU4MmMxOC44OTIsMjEuNzQxLDMzLjYzMiw1MS45OTYsNDIuNzI1LDg3LjU3OGwtNS4wNjgsNS4wNjggIGMtMTIuMTQ2LTUyLjgyNi0zNi4wMTUtOTQuMTAzLTY1Ljc4Mi0xMTYuNDAyQzMxNy41NDcsMjguNTAyLDMyNi45OTksMzYuNDU0LDMzNS43OTksNDYuNTgyeiBNMTI3LjYzOCwyMTUuNzc1ICBjMC01NC42NjQsMTIuNTc2LTEwNC4zNTEsMzIuOTk2LTE0MC45MjZoMTYuMDM0Yy0yMC42MjUsMzguNzU1LTMxLjk1Miw4OC42MDgtMzEuOTUyLDE0MC45MjUgIGMwLDUyLjMxLDExLjMyNiwxMDIuMTYxLDMxLjk0OSwxNDAuOTE2aC0xNi4wMzRDMTQwLjIxMywzMjAuMTE4LDEyNy42MzgsMjcwLjQzNSwxMjcuNjM4LDIxNS43NzV6IE0xNTEuNTgsMzU2LjY5SDY0LjQxNCAgQzQzLjk5NiwzMjAuMTE4LDMxLjQyLDI3MC40MzUsMzEuNDIsMjE1Ljc3NWMwLTU0LjY2NCwxMi41NzYtMTA0LjM1MSwzMi45OTYtMTQwLjkyNmg4Ny4xNjUgIGMtMjAuNjQ1LDM4Ljc1My0zMS45NDMsODguMzkzLTMxLjk0MywxNDAuOTI2QzExOS42MzgsMjY4LjMwNCwxMzAuOTM1LDMxNy45MzksMTUxLjU4LDM1Ni42OXogTTE2NS4zNiw2Ni44NSAgYzE4LjQyOS0yOS41MjksNDIuMzI0LTQ5LjAzNCw2OC43NDYtNTMuNDMyYy0xOS45MTcsMTAuMDIzLTM4LjA4MywyOC4yNDItNTIuOTQ4LDUzLjQzMkgxNjUuMzZ6IE0xNDkuMjk5LDEyLjQ2Mmg2MS41OCAgYy0yMC41ODQsOS43NjEtMzkuMzg1LDI4LjI1OS01NC44MDgsNTQuMzg4SDY5LjE0MkM5MC4xOTEsMzMuMTIzLDExOC4zNywxMi40NjIsMTQ5LjI5OSwxMi40NjJ6IE0xMTEuNjg2LDEzLjk0ICBDOTIuMjY1LDI0LjAzMiw3NC41MzEsNDEuOTg2LDU5Ljg1NCw2Ni44NUg0NS43MjNDNjMuNTAzLDM4LjM2Niw4Ni4zNzEsMTkuMjA0LDExMS42ODYsMTMuOTR6IE04LDIxNS43NzUgIEM4LDE2MS4xMDgsMjAuNTc5LDExMS40MjIsNDEuMDAyLDc0Ljg1aDE0LjM2MUMzNC43MTgsMTEzLjYwMywyMy40MiwxNjMuMjQzLDIzLjQyLDIxNS43NzVjMCw1Mi41MjgsMTEuMjk4LDEwMi4xNjMsMzEuOTQyLDE0MC45MTUgIEg0MUMyMC41NzgsMzIwLjEyMSw4LDI3MC40MzgsOCwyMTUuNzc1eiBNNDUuNzIxLDM2NC42OWgxNC4xMzFjMTQuNjczLDI0Ljg1OCwzMi40MDIsNDIuODE0LDUxLjgxOCw1Mi45MDYgIEM4Ni4zNjEsNDEyLjMyOSw2My40OTgsMzkzLjE2OSw0NS43MjEsMzY0LjY5eiBNMTQ5LjI5OSw0MTkuMDc4Yy0zMC45MjksMC01OS4xMDktMjAuNjYxLTgwLjE1OS01NC4zODhoODYuOTI5ICBjMTUuNDIzLDI2LjEyOSwzNC4yMjUsNDQuNjI2LDU0LjgwOSw1NC4zODhIMTQ5LjI5OXogTTE2NS4zNTgsMzY0LjY5aDE1Ljc5N2MxNC44NTcsMjUuMTgxLDMzLjAxNSw0My4zOTgsNTIuOTIzLDUzLjQyOCAgQzIwNy42NjYsNDEzLjcxMSwxODMuNzgxLDM5NC4yMDksMTY1LjM1OCwzNjQuNjl6IE0yNjMuMzI5LDQxOC42ODljLTI3LjIwOS0yLjg4LTUyLjc5Ni0yMS45MzgtNzIuODE1LTUzLjk5OWg1LjIyMyAgYzIuMjA5LDAsNC0xLjc5MSw0LTRzLTEuNzkxLTQtNC00aC05Ljk1N2MtMC4wNzktMC4xNDEtMC4xNTktMC4yNzctMC4yMzgtMC40MThjLTIxLjE2OC0zOC4wNTctMzIuODI2LTg3Ljk1My0zMi44MjYtMTQwLjQ5OCAgYzAtNTIuNTY2LDExLjY2NS0xMDIuNDc3LDMyLjg0Ni0xNDAuNTM3YzAuMDczLTAuMTMxLDAuMTQ4LTAuMjU3LDAuMjIxLTAuMzg4aDkuOTU1YzIuMjA5LDAsNC0xLjc5MSw0LTRzLTEuNzkxLTQtNC00aC01LjIyICBjMjAuMDMxLTMyLjA3Niw0NS42MzUtNTEuMTMxLDcyLjg1OC01My45OTFjMjMuMDIsMi40NTcsNDQuOTcxLDE2LjQ4NSw2My41MDUsNDAuNjAyYzE4LjI4NywyMy43OTUsMzIuMDM4LDU1Ljc0NSwzOS44NjEsOTIuNDgyICBsLTYyLjU3NCw2Mi41NzRjLTEwLjcwNC02LjIxNC0yMS43ODQtNi43NDEtMjguMDgzLTAuNDQzbC0xNC40MjksMTQuNDI5Yy04LjQsOC40LTQuNjYsMjUuMzAyLDguNTE3LDM4LjQ3OCAgYzguMTQsOC4xNDEsMTguMTA2LDEzLDI2LjY2LDEzYzQuNzkyLDAsOC44NzMtMS41NDYsMTEuODA1LTQuNDcyYzAuMDA0LTAuMDA0LDE0LjQ0Mi0xNC40NCwxNC40NDItMTQuNDQgIGM2LjI5OS02LjI5OCw1Ljc3MS0xNy4zNzctMC40NDQtMjguMDgxbDQ5LjIyMS00OS4yMjJjMS4zNzcsMTIuNDg5LDIuMDg1LDI1LjIzNSwyLjA4NSwzOC4wMWMwLDUyLjU0LTExLjY1NiwxMDIuNDMzLTMyLjgyLDE0MC40ODYgIEMzMjAuNDYzLDM5My40MDUsMjkyLjg0Nyw0MTUuNTU3LDI2My4zMjksNDE4LjY4OXogTTMwMC4xMzQsMjMxLjAxOWMtNi45OTUtNi45OTYtMTUuMzM4LTExLjU1OS0yMi45NzYtMTIuNzA2bDQuNTgzLTQuNTgzICBjNS40OTctNS40OTMsMTguNzI2LDAuMDc5LDI3LjE2NCw4LjUxN2M4LjQzOCw4LjQzOSwxNC4wMTMsMjEuNjcxLDguNTE5LDI3LjE2NWwtNC41ODYsNC41ODYgIEMzMTEuNzI0LDI0Ni41NTcsMzA3LjM0NywyMzguMjMxLDMwMC4xMzQsMjMxLjAxOXogTTMwMi45OTQsMjYzLjg0Yy0xLjQyMSwxLjQyLTMuNDkzLDIuMTQtNi4xNjEsMi4xNCAgYy02LjM4MiwwLTE0LjQzMS00LjA4My0yMS4wMDQtMTAuNjU2Yy04LjQzOC04LjQzOC0xNC4wMTEtMjEuNjctOC41MTctMjcuMTY0YzEuNDItMS40MjEsMy40OTMtMi4xNDEsNi4xNjEtMi4xNDEgIGM2LjM4MywwLDE0LjQzMSw0LjA4MywyMS4wMDQsMTAuNjU2QzMwMi45MTYsMjQ1LjExMywzMDguNDg4LDI1OC4zNDUsMzAyLjk5NCwyNjMuODR6IE0zMDcuMzIxLDQwOC45NjIgIGMxNS4yNjItMTEuMzY1LDI5LjEzMi0yNy44NDcsNDAuNzkyLTQ4LjgxNGMyMS44MTUtMzkuMjIzLDMzLjgyOS05MC40OTYsMzMuODI5LTE0NC4zNzRjMC0xNS4yMjctMC45NzgtMzAuNDIyLTIuODg5LTQ1LjIwNiAgbDUuNjcyLTUuNjcyYzIuNDkyLDE2LjU0MSwzLjc1OSwzMy42MTcsMy43NTksNTAuODc4QzM4OC40ODQsMzA1Ljc2OSwzNTQuMzk3LDM4Mi4yOCwzMDcuMzIxLDQwOC45NjJ6IE00MjIuMDYyLDExNi4yNDggIEwzMTcuOTc1LDIyMC4zMzVjLTEuMDU2LTEuMjc0LTIuMTk0LTIuNTI2LTMuNDE0LTMuNzQ2Yy0xLjIxOS0xLjIxOS0yLjQ3LTIuMzU2LTMuNzQzLTMuNDExbDEwNC4wODctMTA0LjA4NyAgYzEuOTc1LTEuOTczLDUuMTgzLTEuOTczLDcuMTU1LDBjMC45NTQsMC45NTQsMS40NzksMi4yMjksMS40NzksMy42MDNDNDIzLjU0NSwxMTQuMDI3LDQyMy4wMiwxMTUuMjg5LDQyMi4wNjIsMTE2LjI0OHoiIGZpbGw9IiMwMDAwMDAiLz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" class="img img-responsive img-centered" />
-    </div>
-  </div>
-  <div class="row margin-top">
-    <div class="col-sm-4 col-xs-12">
-      <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAyNjkuNTg0IDI2OS41ODQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI2OS41ODQgMjY5LjU4NDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTE0OC4yODIsMTMyLjc0OGMwLjEyNC0wLjA4NCwwLjIzNi0wLjE4NCwwLjMzNi0wLjI5Nmw3My45MTItODIuMjJsLTAuMTA0LTAuMDkyYzEuNDk2LTEuNDMyLDIuMzItMi45ODgsMi4zMi00LjY3NiAgICBjMC0xMy44Mi01NC40NjQtMTguODM2LTkxLjA3Ni0xOC44MzZjLTkuNDQsMC0xOC44NTYsMC4zMzYtMjcuOSwwLjkyNGMtMS4zNi0xLjAwOC0yLjk0NC0xLjg0LTQuODI0LTIuMzY4ICAgIGMtNC4xMjgtMS4xNTYtOC45ODgtMC45MTYtMTMuNjY0LDAuNjc2Yy0wLjU2NCwwLjE5Mi0xLjA4LDAuNDUyLTEuNjI0LDAuNjhMNzEuMzg2LDAuNzMyYy0wLjM4OC0wLjY4OC0xLjI0OC0wLjkzMi0xLjkyOC0wLjU1NiAgICBjLTAuNjg0LDAuMzgtMC45MjgsMS4yNC0wLjU1NiwxLjkyNEw4My4wOSwyNy43NTZjLTEuMzQ0LDAuNzQtMi41NzYsMS41ODgtMy43MDQsMi41MmMtMjAuMzEyLDMuMTItMzQuNTQ4LDguMjEyLTM0LjU0OCwxNS4xODQgICAgYzAsMS42NCwwLjgwNCwzLjE3MiwyLjI2OCw0LjZsMjcuNDY4LDI4LjA1NmMwLjE4NCwwLjI1NiwwLjQyNCwwLjUwNCwwLjcyOCwwLjc0NGw1Mi40LDUzLjUyNGMxLjA5MiwwLjc5MiwyLjI2LDEuMzk2LDMuNDU2LDEuOTIgICAgYzMuMjcyLDEzLjcxNiwwLjM4NCwxMDUuNjYtMC4yNCwxMTAuNTQ4Yy0wLjY0OCwyLjM4NC0yLjAzMiwyLjgzNi01LjEsMy42NGMtMC45NTYsMC4yNDgtMS45OCwwLjU0LTIuODQsMC44NzJsLTE0LjY5Ni00LjA2NCAgICBjMi45MzYtOC41OTIsMC44NzItMTcuMjU2LTUuMjQ0LTIwLjE4NGMtNi44MTItMy4yNTItMTYuMDA4LDEuNzg4LTIwLjUzMiwxMS4yMzZjLTAuMjYsMC41NDQtMC40MjQsMS4wOTItMC42NDQsMS42NCAgICBsLTI4LjQzMi03Ljg2NGMtMC43NjgtMC4yMTYtMS41MzYsMC4yMzItMS43NDgsMC45ODhjLTAuMjA4LDAuNzU2LDAuMjM2LDEuNTM2LDAuOTg4LDEuNzQ0bDI4LjI2LDcuODIgICAgYy0yLjIyOCw4LjA5Mi0wLjA3MiwxNS45NTYsNS42OTYsMTguNzE2YzEuNDE2LDAuNjc2LDIuOTQ0LDEuMDEyLDQuNTI4LDEuMDEyYzIuMjQ4LDAsNC42MDQtMC42NzYsNi45MjQtMi4wMTIgICAgYzMuNzI0LTIuMTQ0LDYuOTQ4LTUuNzgsOS4wODQtMTAuMjM2YzAuMDMyLTAuMDY4LDAuMDQ4LTAuMTM2LDAuMDgtMC4ybDEwLjUyOCwyLjkxMmMtNC4wMzYsMS40NzYtNi4wNzYsMy40MTYtNi4wNzYsNS43OTYgICAgYzAsNi43OTYsMTYuNjU2LDguNjEyLDI2LjUsOC42MTJjNi4yMiwwLDE1LjE0OC0wLjcyOCwyMC44ODgtMi45NzZsMjYuMTI4LDcuMjI4YzAuMTI4LDAuMDM2LDAuMjUyLDAuMDUyLDAuMzgsMC4wNTIgICAgYzAuNjIsMCwxLjE5Mi0wLjQxMiwxLjM2OC0xLjA0YzAuMjA4LTAuNzU2LTAuMjM2LTEuNTM2LTAuOTg4LTEuNzQ0bC0yMy4zMzYtNi40NTZjMS4yOC0xLjAyNCwyLjA2NC0yLjIzMiwyLjA2NC0zLjY3NiAgICBjMC0zLjE3Mi0zLjYyOC01LjU2OC0xMC40MzYtNy4wMDhjLTEuMjcyLTAuNTMyLTIuNTUyLTAuODY0LTMuNjgtMS4xNmMtMy4wNzYtMC44LTQuNDYtMS4yNTYtNS4wNjgtMy40NiAgICBjLTAuNjUyLTQuOTY4LTMuMzYtOTcuOS0wLjY2OC0xMTAuNDcyQzE0Ni4wNDIsMTM0LjA4NCwxNDcuMjA2LDEzMy41MTIsMTQ4LjI4MiwxMzIuNzQ4eiBNOTQuODI2LDIyOS4zMjQgICAgYzAuMTA4LTAuMjI0LDAuMzQ0LTAuMzc2LDAuNTQ4LTAuNTQ4YzEuMDc2LTAuNDEyLDIuMTUyLTAuNjQ4LDMuMTgtMC42NDhjMC4zOCwwLDAuNzQ0LDAuMDU2LDEuMTA4LDAuMTE2ICAgIGMwLjY0LDAuMTU2LDEuMjg4LDAuMzkyLDEuOTI4LDAuNjk2YzAuMDQsMC4wMiwwLjA4LDAuMDQ0LDAuMTIsMC4wNjhjMS44NTYsMS4wOCwzLjA2NCwzLjExMiwzLjU5Miw1LjY1MiAgICBjLTAuOTY4LDEuMzQ0LTMuODA0LDEuNDcyLTYuNTM2LDAuMTY4Qzk1Ljg3LDIzMy40NCw5NC4wNjYsMjMwLjkyLDk0LjgyNiwyMjkuMzI0eiBNMTAzLjU1OCwyNDYuNDM2ICAgIGMtMS43ODgsMy43MzYtNC40NCw2Ljc1Mi03LjQ2OCw4LjVjLTIuNzg0LDEuNi01LjUzMiwxLjkxMi03LjczMiwwLjg1NmMtNC43MjgtMi4yNi01Ljc1Mi0xMC4zNjgtMi4yNC0xNy43MDQgICAgYzEuNzQ0LTMuNjQ0LDQuMzQ0LTYuNTE2LDcuMDkyLTguMjI0Yy0wLjE2NCwyLjIwOCwxLjc1Miw0Ljc4LDQuOTE2LDYuMjkyYzEuNTI4LDAuNzMyLDMuMDcyLDEuMDg0LDQuNDM2LDEuMDg0ICAgIGMxLjE3MiwwLDIuMTg4LTAuMjkyLDIuOTg4LTAuNzk2QzEwNS43OSwyMzkuNTEyLDEwNS4xNzgsMjQzLjA0OCwxMDMuNTU4LDI0Ni40MzZ6IE0xOTEuNzE4LDc4LjUyNCAgICBjLTcuMDU2LDIuMzEyLTI2LjgsNC43NTYtNTYuMjQsNC43NTZjLTYuNzM2LDAtMTIuOTU2LTAuMTI4LTE4LjY0LTAuMzU2bC02LjQyNC0xMS42MTZjNy4zMTItMC40MTIsMTUuNjg4LTAuNjY0LDI1LjA2NC0wLjY2NCAgICBjMzMuMTg4LDAsNTQuMDA0LDMuMTA4LDU4LjI2LDUuNjI4TDE5MS43MTgsNzguNTI0eiBNMTk1LjE1OCw3NC42OTZjLTkuNzMyLTYuMjM2LTU5LjEyOC02LjMyLTU5LjY4LTYuMzIgICAgYy0wLjI3NiwwLTEyLjY2NCwwLjAyNC0yNi4yMzYsMC44MTJsLTMuMTgtNS43NTJjOC45NDQsMC41NzIsMTguMjg0LDAuODY0LDI3LjYwOCwwLjg2NGMyNS44NTYsMCw2MC41OTYtMi41MDgsNzguNzg0LTguODQ4ICAgIEwxOTUuMTU4LDc0LjY5NnogTTEzMy42NywzMC42MjhjNTMuOTQ4LDAsODcuMDc2LDguNjQsODcuMDc2LDE0LjgzNmMwLDYuMTk2LTMzLjEyNCwxNC44MzYtODcuMDc2LDE0LjgzNiAgICBjLTEwLjk4LDAtMjAuOTI0LTAuMzY4LTI5Ljg4NC0wLjk4NGwtNC44Ni04Ljc4OGM4LjE5Mi0zLjkxMiwxMi45MzYtMTEuNDQ4LDEwLjc0OC0xNy44NjhjLTAuMTY4LTAuNDkyLTAuNDUyLTAuOTItMC42OTItMS4zNzIgICAgQzExNi41NjIsMzAuODc2LDEyNC43NjYsMzAuNjI4LDEzMy42NywzMC42Mjh6IE0xMDAuOTMsMjkuNzMyYzAuMTcyLTAuMDYsMC4zNi0wLjA4NCwwLjU0OC0wLjA4OCAgICBjMS40MTIsMC42MTYsMi41NTIsMS40NDQsMy4zNTIsMi40NTZjMC40MjgsMC42NTIsMC44MiwxLjM2OCwxLjEsMi4xOTJjMC4wMTYsMC4wNDQsMC4wMjQsMC4wODgsMC4wMzYsMC4xMzYgICAgYzAuNTI4LDIuMDg4LTAuMDgsNC4zNzItMS41MjgsNi41MjhjLTAuNzA0LDAuMTA4LTEuNDg0LTAuMTI0LTIuMjgtMC43OTZjLTEuMDItMC44NjQtMS44NzYtMi4xOTYtMi40MDgtMy43NiAgICBjLTAuNTM2LTEuNTYtMC42NzItMy4xNC0wLjM5Mi00LjQ0NEM5OS42MTQsMzAuNzgsMTAwLjE3LDI5Ljk5MiwxMDAuOTMsMjkuNzMyeiBNNzkuMjU0LDM2LjA2YzIuMDg4LTIuOCw1LjQtNS4wOCw5LjMxNi02LjQxNiAgICBjMi4zMTYtMC43ODgsNC42NjQtMS4xODgsNi44OTItMS4xODhjMS4zODQsMCwyLjcxMiwwLjE3NiwzLjk2NCwwLjQ4OGMtMC43MiwwLjYtMS4yNDgsMS41MDgtMS41MDQsMi42OTYgICAgYy0wLjMzNiwxLjU2NC0wLjE4NCwzLjQyLDAuNDMyLDUuMjMyczEuNjMyLDMuMzc2LDIuODU2LDQuNDA4YzAuNzA4LDAuNTk2LDEuNDM2LDAuOTA4LDIuMTY0LDEuMDcyICAgIGMtMi4wMjgsMi4zMjQtNC45OTIsNC4zNzItOC41Niw1LjU4OGMtMy45MTYsMS4zMzYtNy45MzIsMS41NTItMTEuMjk2LDAuNjEyYy0zLjA5Ni0wLjg2NC01LjIzNi0yLjYxMi02LjAyLTQuOTIgICAgQzc2LjcwNiw0MS4zMjgsNzcuMzMsMzguNjM2LDc5LjI1NCwzNi4wNnogTTQ5Ljk2Niw0Ny4yNjhsLTAuMTIsMC4xMTZjLTAuNjE2LTAuNjYtMS4wMDgtMS4zMDgtMS4wMDgtMS45MjQgICAgYzAtMy4zMjgsOS4xNzYtNy40NjQsMjYuNDQtMTAuNTI4Yy0yLjA0LDMuMzA4LTIuNjYsNi44MDQtMS41NzIsOS45ODhjMS4yMjgsMy41OTIsNC4zMjQsNi4yNDgsOC43MzIsNy40ODQgICAgYzEuNzI0LDAuNDg0LDMuNTcyLDAuNzI0LDUuNDc2LDAuNzI0YzIuNjcyLDAsNS40Ni0wLjQ3Miw4LjE4OC0xLjRjMC4wNjgtMC4wMjQsMC4xMjgtMC4wNiwwLjItMC4wODRsNC4xMDQsNy40MiAgICBjLTI2LjU2NC0yLjA4NC00My40MDgtNi40NzItNDkuMjEyLTEwLjU0OEw0OS45NjYsNDcuMjY4eiBNNTguNDk0LDU1Ljk4NGMxMC42MiwzLjUxMiwyNi40OTIsNS45MzIsNDQuMTk2LDcuMjI0bDMuNDE2LDYuMTggICAgYy0xMi4yMDQsMC44MTItMjQuNjUyLDIuMjg0LTI5LjY2NCw0Ljk0NEw1OC40OTQsNTUuOTg0eiBNNzcuOTc0LDc1Ljg5MmMzLjcwNC0xLjYwOCwxMy44MjQtMy4zNjgsMjkuMzA4LTQuMzg0bDYuMjMyLDExLjI2OCAgICBjLTE1LjQ4LTAuNzQ0LTI2LjU3Mi0yLjItMzIuNC0zLjY3Nkw3Ny45NzQsNzUuODkyeiBNMTM4LjE5OCwyNjEuMjhjLTE0Ljg4OCwwLTIyLjEyOC0zLjMyNC0yMi41MDQtNC41NzYgICAgYzAuMS0wLjM1NiwxLjcwNC0xLjk2LDcuOTkyLTMuMzUyYzAuNDQ0LTAuMTg4LDAuODk2LTAuMzMyLDEuMzQtMC40NzJsMjYuNDYsNy4zMkMxNDguMDQ2LDI2MC44MzIsMTQzLjY0NiwyNjEuMjgsMTM4LjE5OCwyNjEuMjggICAgeiBNMTQ5LjU3LDI1Mi4zNzJjMS4wMjQsMC4yNjgsMi4wOTIsMC41NCwzLjQ5NiwxLjA4OGM1LjkzNiwxLjI4NCw3LjUzNiwyLjg4NCw3LjYzNiwzLjE3MmMtMC4xNDgsMC41Mi0xLjM4OCwxLjM0LTMuNjg4LDIuMTUyICAgIGwtMjYuOTQtNy40NTJjMi4wNC0wLjg2OCwzLjg2OC0yLjMyLDQuNzEyLTUuNDI4YzAuMTYtMC41OTIsMy43MDgtODguNzk2LDAuNjcyLTExMC4yOGMwLjk2NCwwLjE2LDEuOTMyLDAuMjQ4LDIuOTA0LDAuMjQ4ICAgIGMwLjc2LDAsMS41MTItMC4wNzIsMi4yNjQtMC4xNjhjLTIuNTMyLDE5Ljc2OCwwLjg1NiwxMDkuNjg4LDAuOTkyLDExMC4yQzE0Mi44OTQsMjUwLjYzMiwxNDYuNDQyLDI1MS41NTYsMTQ5LjU3LDI1Mi4zNzJ6ICAgICBNMTMwLjMwNiwxMjkuMzcyTDgzLjg5LDgxLjk0YzguMjgsMS43MTIsMjAuNDI4LDIuNjEyLDMwLjg2NCwzLjA4OGwyMC42OTIsMzcuNDE2YzAuMjYsMC40NjgsMC43NDgsMC43MzIsMS4yNDQsMC43MzIgICAgYzAuMjM2LDAsMC40NjgtMC4wNTYsMC42ODgtMC4xNzZjMC42ODQtMC4zOCwwLjkyOC0xLjI0LDAuNTU2LTEuOTI0bC0xOS44NTYtMzUuOTA0YzkuNjg0LDAuMzcyLDE3LjE4OCwwLjM4OCwxNy40LDAuMzg4ICAgIGMwLjQ3NiwwLDM3LjE2OC0wLjA2NCw1My41NzItNC4wNmwtNDMuMjUyLDQ4LjEwOEMxNDEuMTMsMTMyLjc4NCwxMzQuODM4LDEzMi42MiwxMzAuMzA2LDEyOS4zNzJ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" class="img img-responsive img-centered" />
-    </div>
-    <div class="col-sm-8 col-xs-12">
-      <h3>Sei un pub, un bar o un locale?</h3>
-      <p>Copriamo le spalle anche a te! Dopo aver effettuato un pagamento nei
-      confronti di un gruppo, i soldi vengono trattenuti in modo da assicurarci che
-       tutto vada per il verso giusto!
-    </p>
+  <div class="directify_fn_all_listings">
+    <div class="all_listings">
+      <div class="container">
+        <div class="listings_wrap">
+          <div class="discovering_wrap">
+            <div class="discovering">
+              <div class="title_holder">
+                <h3>Discover the Best Places</h3>
+                <span>Directify helps you find all top locations</span>
+              </div>
+              <div class="searching">
+                <input class="directify_fn_search_input" type="search" placeholder="What Are You Looking For?" />
+                <a class="directify_fn_search_btn" href="#"><img class="svg" src="assets/img/svg/search.svg" alt="" /><span>Search</span></a>
+              </div>
+              <div class="cat_single_wrap" data-hover-text="#fff" data-hover-bg="" data-hover-border="rgba(255,255,255,1)" data-skew="6" data-text-color="#fff" data-bg-color="" data-bg-opacity="" data-border-width="1" data-border-color="rgba(255,255,255,0.64)">
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/restaurant.svg" alt="" />
+                      <span class="cat_title">Restaurants</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/hotel.svg" alt="" />
+                      <span class="cat_title">Hotels</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/shopping.svg" alt="" />
+                      <span class="cat_title">Shopping</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/gallery.svg" alt="" />
+                      <span class="cat_title">Gallery</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/park.svg" alt="" />
+                      <span class="cat_title">Park</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/movie.svg" alt="" />
+                      <span class="cat_title">Movie</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/service.svg" alt="" />
+                      <span class="cat_title">Services</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/theatre.svg" alt="" />
+                      <span class="cat_title">Theatres</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="cat_single">
+                  <div class="cat_single_bg">
+                    <div class="overlay_color"></div>
+                  </div>
+                  <div class="cat_single_content">
+                    <a href="#">
+                      <img class="svg" src="assets/img/svg/hospital.svg" alt="" />
+                      <span class="cat_title">Hospitals</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <!-- #1 item -->
+              <div class="fdbox">
+                <div class="featured_box_wrap">
+                  <div class="featured_box">
+                    <div class="featured_box_img">
+                      <img src="assets/img/featured_listing/list1-l.jpg" alt="" />
+                    </div>
+                    <div class="featured_box_price">
+                      <span class="text">$44</span>
+                      <span class="after"></span>
+                    </div>
+                    <div class="featured_box_info_wrap">
+                      <div class="featured_box_info">
+                        <div class="featured_box_like">
+                          <a href="#">
+                            <img class="svg" src="assets/img/svg/bookmark.svg" alt="" />
+                          </a>
+                          <div class="featured_box_tooltip">
+                            <span>Bookmark</span>
+                          </div>
+                        </div>
+                        <div class="featured_box_title">
+                          <h3><a href="#">Casablanca Hotel</a></h3>
+                        </div>
+                        <div class="directify_fn_rating" data-rating="4.2">
+                          <div class="behind">
+                            <img class="svg" src="assets/img/svg/review.svg" alt="" />
+                          </div>
+                          <div class="up">
+                            <img class="svg" src="assets/img/svg/review.svg" alt="" />
+                          </div>
+                          <div class="featured_box_preview">
+                            <a href="#"><span>Preview</span></a>
+                          </div>
+                        </div>
+                        <div class="featured_box_address">
+                          <img class="svg" src="assets/img/svg/placeholder.svg" alt="" />
+                          <span>147 W 43rd St New York, NY 10036</span>
+                        </div>
+                        <div class="featured_box_author_img">
+                          <div class="author_img">
+                            <img src="assets/img/featured_listing/author1.jpg" alt="" />
+                            <img class="svg" src="assets/img/svg/checked.svg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /#1 item -->
+                
+                <!-- #2 item -->
+                <div class="featured_box_wrap">
+                  <div class="featured_box">
+                    <div class="featured_box_img">
+                      <img src="assets/img/featured_listing/list2-l.jpg" alt="" />
+                    </div>
+                    <div class="featured_box_price">
+                      <span class="text">$15</span>
+                      <span class="after"></span>
+                    </div>
+                    <div class="featured_box_info_wrap">
+                      <div class="featured_box_info">
+                        <div class="featured_box_like">
+                          <a href="#">
+                            <img class="svg" src="assets/img/svg/bookmark.svg" alt="" />
+                          </a>
+                          <div class="featured_box_tooltip">
+                            <span>Bookmark</span>
+                          </div>
+                        </div>
+                        <div class="featured_box_title">
+                          <h3><a href="#">The Lombardy</a></h3>
+                        </div>
+                        <div class="directify_fn_rating" data-rating="4.9">
+                          <div class="behind">
+                            <img class="svg" src="assets/img/svg/review.svg" alt="" />
+                          </div>
+                          <div class="up">
+                            <img class="svg" src="assets/img/svg/review.svg" alt="" />
+                          </div>
+                          <div class="featured_box_preview">
+                            <a href="#"><span>Preview</span></a>
+                          </div>
+                        </div>
+                        <div class="featured_box_address">
+                          <img class="svg" src="assets/img/svg/placeholder.svg" alt="" />
+                          <span>111 E 56th St New York, NY 10022</span>
+                        </div>
+                        <div class="featured_box_author_img">
+                          <div class="author_img">
+                            <img src="assets/img/featured_listing/author2.jpg" alt="" />
+                            <img class="svg" src="assets/img/svg/checked.svg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /#2 item -->
+                
+                <!-- #3 item -->
+                <div class="featured_box_wrap">
+                  <div class="featured_box">
+                    <div class="featured_box_img">
+                      <img src="assets/img/featured_listing/list3-l.jpg" alt="" />
+                    </div>
+                    <div class="featured_box_price">
+                      <span class="text">$37</span>
+                      <span class="after"></span>
+                    </div>
+                    <div class="featured_box_info_wrap">
+                      <div class="featured_box_info">
+                        <div class="featured_box_like">
+                          <a href="#">
+                            <img class="svg" src="assets/img/svg/bookmark.svg" alt="" />
+                          </a>
+                          <div class="featured_box_tooltip">
+                            <span>Bookmark</span>
+                          </div>
+                        </div>
+                        <div class="featured_box_title">
+                          <h3><a href="#">Rock Star Crystals</a></h3>
+                        </div>
+                        <div class="directify_fn_rating" data-rating="5">
+                          <div class="behind">
+                            <img class="svg" src="assets/img/svg/review.svg" alt="" />
+                          </div>
+                          <div class="up">
+                            <img class="svg" src="assets/img/svg/review.svg" alt="" />
+                          </div>
+                          <div class="featured_box_preview">
+                            <a href="#"><span>Preview</span></a>
+                          </div>
+                        </div>
+                        <div class="featured_box_address">
+                          <img class="svg" src="assets/img/svg/placeholder.svg" alt="" />
+                          <span>146 W 26th St New York, NY 10001</span>
+                        </div>
+                        <div class="featured_box_author_img">
+                          <div class="author_img">
+                            <img src="assets/img/featured_listing/author3.jpg" alt="" />
+                            <img class="svg" src="assets/img/svg/checked.svg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /#3 item -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- HOW IT WORK -->
+<div class="directify_fn_workstep_wrap">
+  <div class="directify_fn_workstep">
+    <div class="workstep_wrap">
+      <div class="container">
+        <div class="workstep">
+          <div class="title_holder">
+            <h3>How It Works</h3>
+            <span class="title">Let the Directify direct you toward to top places</span>
+            <span class="line"></span>
+          </div>
+          <div class="steps">
+            <div class="step_single_wrap">
+              <div class="step_single">
+                <div class="number">
+                  <span class="text">01</span>
+                  <span class="after"></span>
+                </div>
+                <div class="title_holder">
+                  <h3>Choose What To Do</h3>
+                  <span>Looking for a cozy hotel to stay, a restaurant to eat, a museum to visit or a mall to do some shopping?</span>
+                </div>
+              </div>
+            </div>
+            <div class="step_single_wrap">
+              <div class="step_single">
+                <div class="number">
+                  <span class="text">02</span>
+                  <span class="after"></span>
+                </div>
+                <div class="title_holder">
+                  <h3>Find the Best Locations </h3>
+                  <span>Search and filter hundreds of listings, read reviews, explore photos and find the perfect spot.</span>
+                </div>
+              </div>
+            </div>
+            <div class="step_single_wrap">
+              <div class="step_single">
+                <div class="number">
+                  <span class="text">03</span>
+                  <span class="after"></span>
+                </div>
+                <div class="title_holder">
+                  <h3>Go and Have Fun</h3>
+                  <span>Go and have a good time or even make a booking directly from the listing page. Sed do eiusmod tempor </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- /HOW IT WORK -->

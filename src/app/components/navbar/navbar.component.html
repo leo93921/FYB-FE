@@ -1,46 +1,135 @@
-<div class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand"><img height="20" alt="Brand" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA81BMVEX///9VPnxWPXxWPXxWPXxWPXxWPXxWPXz///9hSYT6+vuFc6BXPn37+vz8+/z9/f2LeqWMe6aOfqiTg6uXiK5bQ4BZQX9iS4VdRYFdRYJfSINuWI5vWY9xXJF0YJR3Y5Z4ZZd5ZZd6Z5h9apq0qcW1qsW1q8a6sMqpnLyrn76tocCvpMGwpMJoUoprVYxeRoJjS4abjLGilLemmbrDutDFvdLPx9nX0eDa1OLb1uPd1+Td2OXe2eXh3Ofj3+nk4Orl4evp5u7u7PLv7fPx7/T08vb08/f19Pf29Pj39vn6+fuEcZ9YP35aQn/8/P1ZQH5fR4PINAOdAAAAB3RSTlMAIWWOw/P002ipnAAAAPhJREFUeF6NldWOhEAUBRvtRsfdfd3d3e3/v2ZPmGSWZNPDqScqqaSBSy4CGJbtSi2ubRkiwXRkBo6ZdJIApeEwoWMIS1JYwuZCW7hc6ApJkgrr+T/eW1V9uKXS5I5GXAjW2VAV9KFfSfgJpk+w4yXhwoqwl5AIGwp4RPgdK3XNHD2ETYiwe6nUa18f5jYSxle4vulw7/EtoCdzvqkPv3bn7M0eYbc7xFPXzqCrRCgH0Hsm/IjgTSb04W0i7EGjz+xw+wR6oZ1MnJ9TWrtToEx+4QfcZJ5X6tnhw+nhvqebdVhZUJX/oFcKvaTotUcvUnY188ue/n38AunzPPE8yg7bAAAAAElFTkSuQmCC"></a>
+
+<!-- SIGN IN POPUP -->
+<app-login *ngIf="!_userRepo.isConnected"></app-login>
+<!-- /SIGN IN POPUP -->
+
+<!-- MOBILE MENU -->
+<div class="directify_fn_mobile_menu_wrap absolute" data-bg-type="translight">
+  
+  <div class="directify_fn_mobile_menu">
+    <div class="mobile_logo">
+      <a class="dark" href="index.html"><img src="assets/img/logo-dark.png" alt="" /></a>
+      <a class="light" href="index.html"><img src="assets/img/logo-light.png" alt="" /></a>
     </div>
-    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!_userRepo.isConnected; else logged">
-          <a routerLink="/login" alt="Connettiti"><i class="fa fa-sign-in" aria-hidden="true"></i> Accedi</a>
-        </li>
-        <ng-template #logged>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ _userRepo.connecterUser }} <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li>
-                <a routerLink="/profile" alt="Modifica il tuo profilo"><i class="fa fa-address-card-o" aria-hidden="true"></i> I tuoi dati</a>
-              </li>
-              <li>
-                <a routerLink="/messages" alt="Visualizza i messaggi"><i class="fa fa-envelope-o" aria-hidden="true"></i> Messaggi</a>
-              </li>
-              <li>
-                <a routerLink="/actions" alt="Azioni da compiere"><i class="fa fa-cogs" aria-hidden="true"></i> Azioni</a>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li>
-                <a routerLink="/logout" alt="Disconnettiti"><i class="fa fa-sign-out" aria-hidden="true"></i> Disconnettiti</a>
-              </li>
-            </ul>
-          </li>
-        </ng-template>
-        <li class="active">
-          <a href="homepage.html">Home</a>
-        </li>
-        <li>
-          <a routerLink="/search">Ricerca</a>
-        </li>
-      </ul>
+    <div class="mobile_search">
+      <a href="#">
+        <img class="svg" src="assets/img/svg/search.svg" alt="" />
+        Search
+      </a>
+    </div>
+    <div class="hamburger hamburger--collapse-r">
+      <div class="hamburger-box">
+        <div class="hamburger-inner"></div>
+      </div>
+    </div>
+    <div class="s-search">
+      <a href="#">
+        <img class="svg" src="assets/img/svg/search.svg" alt="" />
+      </a>
     </div>
   </div>
+  <div class="directify_fn_mobile_nav">
+    <ul class="nav">
+      <li class="log-in" *ngIf="!_userRepo.isConnected; else logged">
+        <a href="#">Log In</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="mobile_search_see one">
+    <div class="selects">
+      <div>
+        <input class="directify_fn_search_input" type="search" placeholder="What Are You Looking For?" />
+      </div>
+      <div>
+        <select class="directify_fn_select">
+          <option value="all">All Listings</option>
+          <option value="restaurant">Restaurants</option>
+          <option value="hotel">Hotels</option>
+          <option value="shopping">Shopping</option>
+          <option value="gallery">Gallery</option>
+          <option value="park">Park</option>
+          <option value="movie">Movie</option>
+          <option value="service">Services</option>
+          <option value="theatre">Theatres</option>
+          <option value="hospital">Hospitals</option>
+        </select>	
+      </div>
+      <div>
+        <input type="text" id="select-location" placeholder="Location" />
+        <img class="svg" src="assets/img/svg/gps-fixed-indicator.svg" alt="" />
+      </div>
+    </div>
+    <a href="#"><img class="svg" src="assets/img/svg/search.svg" alt="" /><span>Search</span></a>
+  </div>
+  
 </div>
+<!-- /MOBILE MENU -->
+
+<!-- HEADER -->
+<header class="directify_fn_header_wrap absolute" data-bg-type="translight">
+  <div>
+    <div class="directify_fn_header">
+      <div class="header">
+        <div class="directify_fn_header_logo">
+          <a class="dark" href="index.html"><img src="assets/img/logo-dark.png" alt="" /></a>
+          <a class="light" href="index.html"><img src="assets/img/logo-light.png" alt="" /></a>
+        </div>
+        <div class="directify_fn_header_search">
+          <a href="#">
+            <img class="svg" src="assets/img/svg/search.svg" alt="" />
+            Search
+          </a>
+          <div class="directify_fn_header_search_see_wrap one">
+            <div class="header_search_see">
+              <div class="selects">
+                <div>
+                  <input class="directify_fn_search_input" type="search" placeholder="What Are You Looking For?" />
+                </div>
+                <div>
+                  <select class="directify_fn_select">
+                    <option value="all">All Listings</option>
+                    <option value="restaurant">Restaurants</option>
+                    <option value="hotel">Hotels</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="gallery">Gallery</option>
+                    <option value="park">Park</option>
+                    <option value="movie">Movie</option>
+                    <option value="service">Services</option>
+                    <option value="theatre">Theatres</option>
+                    <option value="hospital">Hospitals</option>
+                  </select>	
+                </div>
+                <div>
+                  <input type="text" id="select-location-1" placeholder="Location" />
+                  <img class="svg" src="assets/img/svg/gps-fixed-indicator.svg" alt="" />
+                </div>
+              </div>
+              <a href="#"><img class="svg" src="assets/img/svg/search.svg" alt="" /><span>Search</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="directify_fn_header_nav_list">
+          <ul class="nav__hor">
+            <li class="log-in" *ngIf="!_userRepo.isConnected; else logged">
+              <a href="#">Log In</a>
+            </li>
+            <ng-template #logged>
+              <li>
+                <a href="#">{{ _userRepo.connecterUser }}<i class="xcon-angle-down"></i></a>
+                <ul class="sub_menu">
+                  <li><a routerLink="/profile" alt="Modifica il tuo profilo"><i class="fa fa-address-card-o" aria-hidden="true"></i> I tuoi dati</a></li>
+                  <li><a routerLink="/messages" alt="Visualizza i messaggi"><i class="fa fa-envelope-o" aria-hidden="true"></i> Messaggi</a></li>
+                  <li><a routerLink="/actions" alt="Azioni da compiere"><i class="fa fa-cogs" aria-hidden="true"></i> Azioni</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a routerLink="/logout" alt="Disconnettiti"><i class="fa fa-sign-out" aria-hidden="true"></i> Disconnettiti</a></li>
+                </ul>
+              </li>
+            </ng-template>
+          </ul>
+        </div>	
+      </div>
+    </div>
+  </div>
+</header>
+<!-- /HEADER -->

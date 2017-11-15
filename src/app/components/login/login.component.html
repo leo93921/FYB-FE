@@ -1,27 +1,21 @@
-<div class="container">
-  <div class="section">
-    <div class="row">
-      <div class="col-xs-12">
-
-        <form #f="ngForm">
-          <div class="form-group">
-            <label>Email</label>
-            <input type="text" name="username" class="form-control" [(ngModel)]="username" email required>
+<div class="directify_fn_sign_in">
+    <div class="directify_fn_sign_in_content">
+      <div class="aaa">
+        <div class="sign_in_box effect-1">
+          <div class="sign_in_box_content">
+            <div class="closer">
+              <a href="#"><i class="xcon-cancel"></i></a>
+            </div>
+            <h3>Sign In</h3>
+            <form #f="ngForm">
+                <input type="text" name="username" placeholder="Your Login" [(ngModel)]="username" email required />
+                <input type="password" name="password" placeholder="Your Password" [(ngModel)]="password" required />
+                <input type="button" (click)="login()" [disabled]="f.invalid" value="Continue" />
+            </form>
+            <p>Se ancora non sei iscritto, clicca qui per <a routerLink="/register">registrarti</a></p>
           </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" [(ngModel)]="password" required>
-          </div>
-          <div class="form-group">
-            <button type="button" name="loginAction" class="btn btn-default" (click)="login()" [disabled]="f.invalid">Login</button>
-            <button type="button" name="cancelAction" class="btn btn-danger">Annulla</button>
-          </div>
-        </form>
-
-        <span>
-          Se ancora non sei iscritto, clicca qui per <a routerLink="/register">registrarti</a>
-        </span>
+        </div>
+        <div class="directify_fn_sign_in_closer"></div>
       </div>
     </div>
   </div>
-</div>
