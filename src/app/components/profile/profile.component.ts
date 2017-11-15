@@ -9,7 +9,6 @@ import { UtilsService } from '../../service/utils.service';
 import { MessageService } from '../../service/message.service';
 import { UserRepoService } from '../../service/shared/user-repo.service';
 import { Constants } from '../../constants';
-import { BsModalComponent } from 'ng2-bs3-modal';
 
 @Component({
   selector: 'app-profile',
@@ -27,16 +26,20 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public modalOpen = false;
   private userId: string;
   public user: UserProfile = new UserProfile();
-  private mediaContainer: MediaContainer = new MediaContainer();
+  public mediaContainer: MediaContainer = new MediaContainer();
   public fileNotSelected = true;
   public fileName: string;
   private file: any;
-  @ViewChild(BsModalComponent) private modal: BsModalComponent;
-  public addImage: boolean = false;
   public domains: any[] = [];
   public tracks: any[] = [];
   public images: any[] = [];
   private subscriptions: Subscription[] = [];
+  public SELECTABLE_MENU: any = {
+    BASIC_INFO: 'BASIC_INFO',
+    IMAGES: 'IMAGES',
+    MUSIC: 'MUSIC'
+  };
+  public selectedMenu: string = this.SELECTABLE_MENU.BASIC_INFO;
 
   constructor(
     private _mediaManagement: MediaManagementService,
@@ -118,16 +121,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
         if (!saved) {
           this._messageService.showError(
             'Impossibile salvare',
-            `La traccia che hai provato a caricare non è stata salvata, ti preghiamo
+            `L'elemento che hai provato a salvare non è stato salvato, ti preghiamo
           di riprovare tra un po'. Se il problema persiste contatta l'amministratore del sito.`
           );
         }
-        this.modal.dismiss();
         this.mediaContainer.title = '';
         this.mediaContainer.userId = this.userId;
         this.fileName = '';
         this.fileNotSelected = true;
-        if (this.addImage) {
+        if (this.selectedMenu === this.SELECTABLE_MENU.IMAGES) {
           this.refreshImages();
         } else {
           this.refreshTracks();
@@ -166,6 +168,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 }
 
 export class UserProfile {
+  id: string;
   name: string;
   description: string;
   phone: string;

@@ -66,7 +66,6 @@ jQuery(document).ready(function(){
 	
 	jQuery(window).on('scroll', function(e) {
 		e.preventDefault();
-        directify_fn_totop_myhide();
     });
 	
 	jQuery(window).load(function(){
@@ -872,25 +871,6 @@ function directify_fn_listings_categories(){
 		/* ---------------------------------------------- */
 		
 	});
-}
-// -----------------------------------------------------
-// ---------------    TOTOP MYHIDE    ------------------
-// -----------------------------------------------------
-function directify_fn_totop_myhide(){
-	"use strict";
-	
-	var toTop		=	jQuery("a.totop");
-	var listed		=	jQuery("a.listed");
-	var topOffSet 	= 	toTop.offset().top;
-	
-	if(topOffSet > 1000){
-		toTop.addClass('opened');	
-		listed.addClass('opened');	
-	}else{
-		toTop.removeClass('opened');
-		listed.removeClass('opened');
-	}
-	
 }
 // -----------------------------------------------------
 // --------------------    TOTOP    --------------------

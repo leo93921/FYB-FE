@@ -1,3 +1,33 @@
+.directify_fn_dashboard_wrapper {
+  padding-top: 120px !important;
+}
+.title_holder_no_padding {
+  padding-left: 0px !important;
+}
+.images__container {
+  margin-left: auto;
+  margin-right: auto;
+}
+.col-1{
+  width: 8.33333%;
+}
+.col-9{
+  width: 75%;
+}
+.table {
+  text-align: center;
+}
+.div_bordered {
+  border-bottom: 1px solid #f5f5f5;
+}
+.filename {
+  padding: 7px 12px;
+  font-weight: normal;
+  display: inline;
+}
+.nav li {
+  cursor: pointer;
+}
 input[type='file'] {
   display: none;
 }
