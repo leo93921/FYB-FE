@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserRepoService } from '../../service/shared/user-repo.service';
 
 @Component({
@@ -8,9 +8,12 @@ import { UserRepoService } from '../../service/shared/user-repo.service';
 })
 export class NavbarComponent implements OnInit {
   public notConnected: boolean;
-  public userName: string = '';
+  public userName = '';
+  @Input() public type = 'translight';
 
-  constructor(public _userRepo: UserRepoService) {}
+  constructor(
+    public _userRepo: UserRepoService
+  ) {}
 
   ngOnInit() {
     this.notConnected = !(
