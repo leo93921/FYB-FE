@@ -17,15 +17,15 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./ng2-audio-player.component.css']
 })
 export class Ng2AudioPlayerComponent implements OnInit, OnChanges, OnDestroy {
-  public displayPlaylist: boolean = false;
-  public isPlaying: boolean = false;
+  public displayPlaylist = false;
+  public isPlaying = false;
   private audioDuration: number;
-  public viewAudioDuration: string = '00:00';
+  public viewAudioDuration = '00:00';
   private currentTime: number;
-  public viewCurrentTime: string = '00:00';
-  public completedPercentage: number = 0;
-  private bufferPercentage: number = 0;
-  private isReadyForPlay: boolean = false;
+  public viewCurrentTime = '00:00';
+  public completedPercentage = 0;
+  public bufferPercentage = 0;
+  private isReadyForPlay = false;
 
   private loadedMetadata: EventEmitter<void> = new EventEmitter<void>();
   private timeUpdate: EventEmitter<void> = new EventEmitter<void>();
@@ -36,9 +36,9 @@ export class Ng2AudioPlayerComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() public playList: PlayListItem[] = [];
   private activeAudio = new Audio();
-  private activeAudioTitle: string;
-  private activeAudioArtist: string;
-  private selectedTrackIndex: number = 0;
+  public activeAudioTitle: string;
+  public activeAudioArtist: string;
+  private selectedTrackIndex = 0;
 
   private subscriptions: Subscription[] = [];
 
@@ -72,7 +72,7 @@ export class Ng2AudioPlayerComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes['playList'] && changes['playList'].currentValue) {
-      if (this.playList.length > 0) this.selectTrack(0, true);
+      if (this.playList.length > 0) { this.selectTrack(0, true); }
     }
   }
 
@@ -170,12 +170,12 @@ export class Ng2AudioPlayerComponent implements OnInit, OnChanges, OnDestroy {
     }
     const minutes = Math.floor(duration / 60);
     let minuteStr = minutes.toString();
-    if (minuteStr.length == 1) {
+    if (minuteStr.length === 1) {
       minuteStr = `0${minuteStr}`;
     }
     const seconds = Math.floor(duration - minutes * 60);
     let secondsStr = seconds.toString();
-    if (secondsStr.length == 1) {
+    if (secondsStr.length === 1) {
       secondsStr = `0${secondsStr}`;
     }
     return `${minuteStr}:${secondsStr}`;
@@ -183,7 +183,7 @@ export class Ng2AudioPlayerComponent implements OnInit, OnChanges, OnDestroy {
 
   private updateBufferWidth() {
     const buffered = this.activeAudio.buffered;
-    if (buffered.length == 0) return;
+    if (buffered.length === 0) { return; }
     this.bufferPercentage = Math.round(
       100 * buffered.end(0) / this.activeAudio.duration
     );

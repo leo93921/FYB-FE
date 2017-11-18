@@ -81,7 +81,7 @@ export class UserProfileComponent implements OnInit {
     for (const item of this.profile.music) {
       const track: PlayListItem = new PlayListItem();
       track.artist = this.profile.name;
-      track.file = item.url;
+      track.file = `assets/upload/` + item.url;
       track.title = item.name;
       playlist.push(track);
     }

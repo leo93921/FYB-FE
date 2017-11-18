@@ -46,15 +46,15 @@
 }
 
 .waves {
-  position: relative;
-  z-index: 20;
-  top: -220px;
-  -webkit-transition: top 0.2s ease-in-out;
-  transition: top 0.2s ease-in-out;
+  position: relative !important;
+  z-index: 20 !important;
+  top: -220px !important;
+  -webkit-transition: top 0.2s ease-in-out !important;
+  transition: top 0.2s ease-in-out !important;
 }
 
 .waves.waves_up {
-  top: -430px;
+  top: -430px !important;
 }
 
 .player_content {
@@ -411,7 +411,7 @@
   position: absolute;
   top: 3px;
   height: 3px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(0, 129, 181);
 }
 
 .line_preload {
@@ -438,7 +438,7 @@
   height: 2px;
   -webkit-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(119, 119, 119, 0.4);
 }
 
 .progress-bar-pointer {
@@ -450,7 +450,7 @@
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   border-radius: 50%;
-  background: #fff;
+  background: rgb(0, 129, 181);
 }
 
 .progress-bar-wrapper:hover .progress-bar-pointer {
@@ -469,7 +469,8 @@
   padding-top: 7px;
   -webkit-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
-  color: rgba(255, 255, 255, 1);
+  color: #777;
+  text-align: center;
 }
 
 .player_btns {
@@ -481,7 +482,7 @@
   padding-top: 33px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  color: rgba(255, 255, 255, 1);
+  color: rgba(0, 178, 250, 1);
 }
 
 .play_btn {
@@ -610,4 +611,13 @@
 
 .player .eq__bar:nth-child(3) {
   animation: eq 1.2s ease-in-out infinite 0.6s;
+}
+.player_playlist_list {
+  margin: 0px;
+}
+h6 {
+  margin-bottom: 10px;
+}
+.song_block {
+  padding: 5px;
 }
