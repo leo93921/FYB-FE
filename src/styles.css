@@ -1,2 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+
+button{
+    background-color: #0089e2;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    cursor: pointer;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    display: inline-block !important;
+    width: auto !important;
+    min-width: auto !important;
+    border: none !important;
+    font-size: 14px;
+    line-height: 1;
+    font-family: 'Poppins' !important;
+    letter-spacing: 0px;
+    color: #fff;
+    padding: 15px 20px;
+  }
+  button:disabled {
+    background-color: #7cb7db;
+    pointer-events: none;
+  }
+  button:hover {
+    background-color: #0063a0;
+  }

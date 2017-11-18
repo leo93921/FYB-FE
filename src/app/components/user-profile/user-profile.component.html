@@ -1,110 +1,462 @@
-<carousel>
-  <slide>
-    <img src="assets/people-eiffel-tower-lights-night.jpg" alt="First slide">
-    <ng-template *ngTemplateOutlet="user_info"></ng-template>
-  </slide>
-  <slide>
-  <img src="assets/pexels-photo-173523.jpg" alt="Third slide">
-  <ng-template *ngTemplateOutlet="user_info"></ng-template>
-</slide>
-</carousel>
-
-<ng-template #user_info>
-  <div class="carousel-caption">
-    <h3>{{ profile.name }}</h3>
-    <h4>{{ profile.description }}</h4>
-    <p><i class="fa fa-phone" aria-hidden="true"></i> {{ profile.phone }}<span class="seperate-h"></span><!-- {% TODO if utente.tipo is constant('AppBundle\\Entity\\UserType::GRUPPO')  %} --><i class="fa fa-usd" aria-hidden="true"></i> {{ priceBand }} €</p>
-
-    <!-- {% TODO if feedback.voto is not null %} -->
-    <p class="feedP">
-      <rating [(ngModel)]="profile.feedbackValue" [readonly]="true"
-      [titles]="['Assolutamente non soddisfatto', 'Poco soddisfatto', 'Soddisfatto', 'Molto soddisfatto', 'Eccellente']"></rating>
-      <span>&nbsp;({{profile.feedbackCount}})</span>
-    </p>
-
-    <!-- {% TODO if ingaggiabile == true %} -->
-    <button type="button" class="btn btn-success btn-outline btn-engage" (click)="modal.open()">Ingaggia</button>
-  </div>
-</ng-template>
-
-<!--Eventi-->
-<div class="section margin-top">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <img src="/assets/booking.jpg" class="img-responsive">
-      </div>
-      <div class="col-md-4">
-        <ul class="media-list text-left">
-          <ng-container *ngFor="let evento of [{giorno: '11', mese: 'JAN', nome: 'Nome evento', descrizione: 'Una descrizione' }]">
-            <li class="media">
-              <div class="media-left media-middle">
-                <a class="link-event-date">
-                  <div class="media-object event-date">
-                    <div class="event-day">
-                      {{ evento.giorno }}
-                    </div>
-                    <div class="event-month">
-                      {{ evento.mese }}
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="media-body media-middle">
-                <h4 class="media-heading">{{ evento.nome }}</h4>
-                <p>{{ evento.descrizione }}</p>
-                <div class="col-md-12 text-right">
-                  <a class="btn btn-danger">Vedi <i class="fa fa-fw fa-angle-double-right"></i></a>
+    	<!-- SINGLE FULL INFO -->
+      <div class="directify_fn_single_wrapper second_single">
+        <div class="container">
+          <div class="directify_fn_single_content">
+            <div class="single_content">
+              <!-- SINGLE PROFILE  -->
+              <div class="single_profile verified">
+                <div class="profile_verified">
                 </div>
               </div>
-            </li>
-          </ng-container>
-        </ul>
+              <!-- /SINGLE PROFILE  -->
+              
+              <!-- SINGLE INFO -->
+              <div class="single_info">
+                
+                <!-- LEFT SIDE OF SINGLE INFO -->
+                <div class="left_content_wrap">
+                  <div class="left_content">
+                    
+                    <!-- CONTACT FORM -->
+                    <div class="contact_form_wrap">
+                      <div class="contact_form">
+                        <div class="closer">
+                          <a href="#">
+                            <span class="a"></span>
+                            <span class="b"></span>
+                          </a>
+                        </div>
+                        <div class="title_holder">
+                          <h3>Contatta l'utente</h3>
+                        </div>
+                        <form #f="ngForm" class="contact_form" id="contact_form" novalidate>
+                          <div class="your-date">
+                            <label>Data prevista per l'evento<span>*</span></label>
+                            <input type="datetime-local" id="email" name="date" required [(ngModel)]="communication.date" />
+                          </div>
+                          <div class="your-message">
+                            <label>Message<span>*</span></label>
+                            <textarea id="message" cols="3" name="text" rows="10"  [(ngModel)]="communication.text" required></textarea>
+                          </div>
+                          <div class="button">
+                            <button [disabled]="f.invalid" (click)="sendMessage()">Invia messaggio</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <!-- /CONTACT FORM -->
+                    <!-- TRIPLE BUTTONS -->
+                    <div class="triple_buttons_wrap">
+                      <div class="triple_buttons">
+                        <div class="btn">
+                          <a href="#" class="prfbtn contact"><span class="button"><img class="svg" src="assets/img/svg/message.svg" alt="" /><span>Invia un messaggio</span></span></a>
+                        </div>
+                        <div class="btn">
+                          <a href="#add_new_review"><span class="button"><img class="svg" src="assets/img/svg/favorite.svg" alt="" /><span>Scrivi una recensione</span></span></a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /TRIPLE BUTTONS -->
+                    <!-- SINGLE TITLE -->
+                    <div class="single_title responsive">
+                      <div class="pricetitle">
+                        <div class="price_wrapper">
+                          <span class="price"><span class="text">Prezzo:</span> <span class="number">{{ priceBand }} €</span></span>
+                        </div>
+                        <div class="title_verified">
+                          <div class="title_ver">
+                            <img class="svg" src="assets/img/svg/checked.svg" alt="" />
+                            <span>{{ profile.type === 1 ? 'Gruppo musicale' : 'Locale' }}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="title_info">
+                        <div class="title_holder">
+                          <div>
+                            <h3>{{ profile.name }}</h3>
+                            <div>
+                              <ng-template *ngTemplateOutlet="review_rating_overall"></ng-template>
+                              <span class="rating-desc"> - {{ profile.feedbackCount }} {{ profile.feedbackCount === 1 ? 'Recensione' : 'Recensioni' }}</span>
+                            </div>
+                            <span class="categories"><a href="#">Tour</a>, <a href="#">Sightseeing</a></span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <!-- /SINGLE TITLE -->
+                    <!-- VIDEO PRESENTATION -->
+                    <div class="video_presentaiton_wrap responsive" *ngIf="profile.youtube">
+                      <ng-container *ngTemplateOutlet="youtube_video"></ng-container>
+                    </div>
+                    <!-- /VIDEO PRESENTATION -->
+                    <!-- PHOTOBOX -->
+                    <div class="photo_box_wrap responsive">
+                      <ng-container *ngTemplateOutlet="photo_gallery"></ng-container>
+                    </div>
+                    <!-- /PHOTOBOX -->
+                    <!-- ADDRESS BOX -->
+                    <div class="address_wrap">
+                      <div class="address">
+                        <ul>
+                          <li><img class="svg" src="assets/img/svg/placeholder.svg" alt="" /><span>{{ profile.address }}</span></li>
+                          <li><img class="svg" src="assets/img/svg/phone-call.svg" alt="" /><span>{{ profile.phone}}</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- /ADDRESS BOX -->
+                    <!-- SOME TEXT -->
+                    <div class="some_text">
+                      <span>{{ profile.description }}</span>
+                    </div>
+                    <!-- /SOME TEXT -->
+                    
+                    <!-- GOOGLE MAP -->
+                    <div class="google_map_wrap">
+                      <div class="google_map">
+                        <iframe width="100%" height="350px" frameborder="0" style="border:0" [src]="mapsUrl" allowfullscreen>
+                        </iframe>
+                      </div>
+                    </div>
+                    <!-- /GOOGLE MAP -->
+                    
+                    <!-- REVIEW BOX -->
+                    <div class="directify_fn_review_wrapper">
+                      
+                      <!-- RATING BOX -->
+                      <div class="rating_box">
+                        <div class="rating_total">
+                          <h3>{{ profile.feedbackValue }}</h3>
+                          <span class="rating-total-desc">{{ profile.feedbackCount }} {{ profile.feedbackCount === 1 ? 'Recensione' : 'Recensioni' }}</span>
+                          <ng-container *ngTemplateOutlet="review_rating_overall"></ng-container>
+                        </div>
+                        <div class="rating_progress">
+                          <div class="progress_bar_wrap">
+                            <div class="progress_bar" *ngFor="let item of profile.feedbackContainer?.counts">
+                              <span class="label">{{ item.vote }} star</span>
+                              <div class="barr">
+                                <div class="bar_bg">
+                                  <div class="bar_wrap" [style.width]="item.percentage + '%'">
+                                    <div class="bar">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <span class="number">{{item.percentage}}%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- RATING BOX -->
+                      
+                      <!-- ALL REVIEWS -->
+                      <div class="all_reviews_wrap">
+                        <div class="all_reviews">
+                          <div class="title_holder">
+                            <h3>Ultime recensioni</h3>
+                          </div>
+                          
+                          <div class="review_single" *ngFor="let item of profile.feedbackContainer?.feedback">
+                            <div class="person_comment">
+                              <div>
+                                  <div class="rating-container">
+                                      <span id="1" class="fa" [ngClass]="{'fa-star-o': (item.value <= 0.2), 'fa-star-half-o': (item.value > 0.2 && item.value < 0.6), 'fa-star': (item.value >= 0.6)}"></span>
+                                      <span id="2" class="fa" [ngClass]="{'fa-star-o': (item.value <= 1), 'fa-star-half-o': (item.value > 1 && item.value < 1.6), 'fa-star': (item.value >= 1.6)}"></span>
+                                      <span id="3" class="fa" [ngClass]="{'fa-star-o': (item.value <= 2), 'fa-star-half-o': (item.value > 2 && item.value < 2.6), 'fa-star': (item.value >= 2.6)}"></span>
+                                      <span id="4" class="fa" [ngClass]="{'fa-star-o': (item.value <= 3), 'fa-star-half-o': (item.value > 3 && item.value < 3.6), 'fa-star': (item.value >= 3.6)}"></span>
+                                      <span id="5" class="fa" [ngClass]="{'fa-star-o': (item.value <= 4), 'fa-star-half-o': (item.value > 4 && item.value < 4.6), 'fa-star': (item.value >= 4.6)}"></span>
+                                  </div>
+                                <span class="rating-desc"> - {{ item.when | toDate | date:'short'}}</span>
+                              </div>
+                              <div class="title_holder">
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.text }}</p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                      <!-- /ALL REVIEWS -->
+                      
+                      <!-- WRTIE A REVIEW -->
+                      <div class="add_review_wrap" id="add_new_review">
+                        <div class="add_review">
+                          
+                          <div class="title_holder">
+                            <h3>Scrivi una Recensione</h3>
+                          </div>
+                          
+                          <form>
+                            
+                            <div class="your-title">
+                              <label>Titolo della recensione</label>
+                              <input type="text" id="your-title" />
+                            </div>
+                            <div class="your-review">
+                              <label>Recensione<span>*</span></label>
+                              <textarea id="review" cols="3" rows="10"></textarea>
+                            </div>
+                            <div class="your-rating">
+                              <label>Punteggio<span>*</span></label>
+                              
+                              <select name="punteggio">
+                                <option value="1">Pessimo</option>
+                                <option value="2">Accettabile</option>
+                                <option value="3">All'altezza</option>
+                                <option value="4">Buono</option>
+                                <option value="5">Ottimo</option>
+                              </select>
+                            </div>
+                            
+                            <div class="submit-btn">
+                              <button role="button">Salva</button>
+                            </div>
+                            
+                          </form>
+                          
+                        </div>
+                      </div>
+                      <!-- /WRTIE A REVIEW -->
+                      
+                    </div>
+                    <!-- /REVIEW BOX -->
+                    
+                    
+                  </div>
+                </div>
+                <!-- /LEFT SIDE OF SINGLE INFO -->
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <!-- RIGHT SIDE OF SINGLE INFO -->
+                <div class="right_content_wrap">
+                  <div class="right_content">
+                    
+                    <!-- SINGLE TITLE -->
+                    <div class="single_title">
+                      
+                      <div class="price_wrapper">
+                        <span class="price"><span class="text">Prezzo:</span> <span class="number">{{ priceBand }} €</span></span>
+                      </div>
+                      <div class="title_verified">
+                        <div class="title_ver">
+                          <span>{{ profile.type === 1 ? 'Gruppo musicale' : 'Locale' }}</span>
+                        </div>
+                      </div>
+                      
+                      <div class="title_info">
+                        <div class="title_holder">
+                          <h3>{{ profile.name }}</h3>
+                          <div>
+                            <ng-container *ngTemplateOutlet="review_rating_overall"></ng-container>
+                            <span class="rating-desc"> - {{ profile.feedbackCount }} {{ profile.feedbackCount === 1 ? 'Recensione' : 'Recensioni' }}</span>
+                          </div>
+                          <span class="categories"><a href="#">Tour</a>, <a href="#">Sightseeing</a></span>
+                          <div class="phone_number">
+                            <img class="svg" src="assets/img/svg/phone-call.svg" alt="" />
+                            <span>{{ profile.phone }}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <!-- /SINGLE TITLE -->
+                    <!-- VIDEO PRESENTATION -->
+                    <div class="video_presentaiton_wrap" *ngIf="profile.youtube">
+                      <ng-container *ngTemplateOutlet="youtube_video"></ng-container>
+                    </div>
+                    <!-- /VIDEO PRESENTATION -->
+                    
+                    <!-- PHOTOBOX -->
+                    <div class="photo_box_wrap">
+                      <ng-container *ngTemplateOutlet="photo_gallery"></ng-container>
+                    </div>
+                    <!-- /PHOTOBOX -->
+                    
+                  </div>
+                </div>
+                <!-- RIGHT SIDE OF SINGLE INFO -->
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+              </div>
+              <!-- /SINGLE INFO -->
+            </div>
+          </div>
+        </div> 			
       </div>
-    </div>
-  </div>
-</div>
-<!--Fine Eventi-->
-
-<div class="section margin-top">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-xs-12" *ngIf="profile.youtube">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" [src]="youtubeVideoUrl" frameborder="0" allowfullscreen></iframe>
+      <!-- /SINGLE FULL INFO -->          
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <ng-template #youtube_video>
+        <div class="video_presentation">
+          <a class="popup-youtube" [href]="youtubeVideoUrl">
+            <img class="svg" src="/assets/img/svg/play-button.svg" alt="" />
+            <span>Guarda il video</span>
+          </a>
         </div>
-      </div>
-      <div class="col-xs-12" [ngClass]="{'col-sm-3': profile.youtube, 'col-sm-12': !profile.youtube}">
+      </ng-template>
+      
+      <ng-template #mp3_player>
         <app-ng2-audio-player [playList]="playlist"></app-ng2-audio-player>
-      </div>
-    </div>
-  </div>
-</div>
+      </ng-template>
+      
+      <ng-template #photo_gallery>
+        <div class="photo_box">
+          <ul class="directify_fn_gallery">
+            <li *ngFor="let image of profile.images" class="as-table">
+              <a href="assets/upload/{{image.url}}" class="as-table-cell">
+                <img src="assets/upload/{{image.url}}" clas="img-thumb" alt="" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ng-template>
 
-<bs-modal #modal>
-  <bs-modal-header [showDismiss]="true">
-    <h4 class="modal-title">
-      <span>Richiedi informazioni</span>
-    </h4>
-  </bs-modal-header>
-  <bs-modal-body>
-    <form #f="ngForm" novalidate>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <label>Testo</label>
-          <textarea name="text" rows="8" [(ngModel)]="communication.text" required class="form-control"></textarea>
+<ng-template #review_rating_overall>
+    <div class="rating-container">
+        <span id="1" class="fa" [ngClass]="{'fa-star-o': (profile.feedbackValue <= 0.2), 'fa-star-half-o': (profile.feedbackValue > 0.2 && profile.feedbackValue < 0.6), 'fa-star': (profile.feedbackValue >= 0.6)}"></span>
+        <span id="2" class="fa" [ngClass]="{'fa-star-o': (profile.feedbackValue <= 1), 'fa-star-half-o': (profile.feedbackValue > 1 && profile.feedbackValue < 1.6), 'fa-star': (profile.feedbackValue >= 1.6)}"></span>
+        <span id="3" class="fa" [ngClass]="{'fa-star-o': (profile.feedbackValue <= 2), 'fa-star-half-o': (profile.feedbackValue > 2 && profile.feedbackValue < 2.6), 'fa-star': (profile.feedbackValue >= 2.6)}"></span>
+        <span id="4" class="fa" [ngClass]="{'fa-star-o': (profile.feedbackValue <= 3), 'fa-star-half-o': (profile.feedbackValue > 3 && profile.feedbackValue < 3.6), 'fa-star': (profile.feedbackValue >= 3.6)}"></span>
+        <span id="5" class="fa" [ngClass]="{'fa-star-o': (profile.feedbackValue <= 4), 'fa-star-half-o': (profile.feedbackValue > 4 && profile.feedbackValue < 4.6), 'fa-star': (profile.feedbackValue >= 4.6)}"></span>
+    </div>
+</ng-template>
+
+      <!-- <ng-template #review_rating  let-rate="rate"> -->
+        <!-- --{{ profile | json }}-- -->
+          <!-- <span class="fa" [ngClass]="{'fa-star checked': feedbackValue>0 && feedbackValue<0.5, 'fa-star checked': feedbackValue>0.5, 'fa-star': feedbackValue<1}"></span>
+          <span class="fa" [ngClass]="{'fa-star checked': feedbackValue>0 && feedbackValue<1.5, 'fa-star checked': feedbackValue>1.5, 'fa-star': feedbackValue<2}"></span>
+          <span class="fa" [ngClass]="{'fa-star checked': feedbackValue>0 && feedbackValue<2.5, 'fa-star checked': feedbackValue>2.5, 'fa-star': feedbackValue<3}"></span>
+          <span class="fa" [ngClass]="{'fa-star checked': feedbackValue>0 && feedbackValue<3.5, 'fa-star checked': feedbackValue>3.5, 'fa-star': feedbackValue<4}"></span>
+          <span class="fa" [ngClass]="{'fa-star checked': feedbackValue>0 && feedbackValue<4.5, 'fa-star checked': feedbackValue>4.5, 'fa-star': feedbackValue<5}"></span> -->
+
+
+        <!-- <div class="behind" [style.width]="(90 - 18*feedbackValue) + '%'">
+          <img class="svg" src="assets/img/svg/review.svg" alt="" />
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <label>Data prevista per l'evento</label>
-          <input type="text" class="form-control" bsDatepicker [(ngModel)]="communication.date" name="eventDate"/>
-        </div>
-      </div>
-    </form>
-  </bs-modal-body>
-  <bs-modal-footer>
-    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annulla</button>
-    <button type="button" class="btn btn-primary" (click)="sendMessage()" [disabled]="f.invalid">Carica</button>
-  </bs-modal-footer>
-</bs-modal>
+        <div class="up" [style.width]="(feedbackValue <= 5 ? 18*feedbackValue : 0) + '%'">
+          <img class="svg" src="assets/img/svg/review.svg" alt="" />
+        </div> -->
+      <!-- </ng-template> -->
+
+      <!-- <carousel>
+        <slide>
+          <img src="assets/people-eiffel-tower-lights-night.jpg" alt="First slide">
+          <ng-template *ngTemplateOutlet="user_info"></ng-template>
+        </slide>
+        <slide>
+          <img src="assets/pexels-photo-173523.jpg" alt="Third slide">
+          <ng-template *ngTemplateOutlet="user_info"></ng-template>
+        </slide>
+      </carousel> -->
+      
+      
+      <!-- <ng-template #user_info>
+        <div class="carousel-caption">
+          <h3>{{ profile.name }}</h3>
+          <h4>{{ profile.description }}</h4>
+          <p><i class="fa fa-phone" aria-hidden="true"></i> {{ profile.phone }}<span class="seperate-h"></span>{% TODO if utente.tipo is constant('AppBundle\\Entity\\UserType::GRUPPO')  %}<i class="fa fa-usd" aria-hidden="true"></i> {{ priceBand }} €</p> -->
+          
+          <!-- {% TODO if feedback.voto is not null %} -->
+          <!-- <p class="feedP">
+            <rating [(ngModel)]="profile.feedbackValue" [readonly]="true"
+            [titles]="['Assolutamente non soddisfatto', 'Poco soddisfatto', 'Soddisfatto', 'Molto soddisfatto', 'Eccellente']"></rating>
+            <span>&nbsp;({{profile.feedbackCount}})</span>
+          </p> -->
+          
+          <!-- {% TODO if ingaggiabile == true %} -->
+          <!-- <button type="button" class="btn btn-success btn-outline btn-engage" (click)="modal.open()">Ingaggia</button>
+          </div>
+        </ng-template> -->
+        
+        <!--Eventi-->
+        <!-- <div class="section margin-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8">
+                <img src="/assets/booking.jpg" class="img-responsive">
+              </div>
+              <div class="col-md-4">
+                <ul class="media-list text-left">
+                  <ng-container *ngFor="let evento of [{giorno: '11', mese: 'JAN', nome: 'Nome evento', descrizione: 'Una descrizione' }]">
+                    <li class="media">
+                      <div class="media-left media-middle">
+                        <a class="link-event-date">
+                          <div class="media-object event-date">
+                            <div class="event-day">
+                              {{ evento.giorno }}
+                            </div>
+                            <div class="event-month">
+                              {{ evento.mese }}
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="media-body media-middle">
+                        <h4 class="media-heading">{{ evento.nome }}</h4>
+                        <p>{{ evento.descrizione }}</p>
+                        <div class="col-md-12 text-right">
+                          <a class="btn btn-danger">Vedi <i class="fa fa-fw fa-angle-double-right"></i></a>
+                        </div>
+                      </div>
+                    </li>
+                  </ng-container>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!--Fine Eventi-->
+        
+        <!-- <div class="section margin-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-9 col-xs-12" *ngIf="profile.youtube">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" [src]="youtubeVideoUrl" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-xs-12" [ngClass]="{'col-sm-3': profile.youtube, 'col-sm-12': !profile.youtube}">
+                
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+        

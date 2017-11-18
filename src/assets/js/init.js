@@ -515,9 +515,9 @@ function directory_fn_jumping_to_adding_review(){
 function directify_fn_profile_button(){
 	"use strict";
 	
-	var btnProfile	= jQuery('.directify_fn_single_wrapper .single_profile a.contact');
-	var btnCloser	= jQuery('.directify_fn_single_wrapper .single_info .contact_form_wrap .closer a');
-	var box			= jQuery('.directify_fn_single_wrapper .single_info .contact_form_wrap');
+	var btnProfile	= jQuery('a.contact');
+	var btnCloser	= jQuery('.single_info .contact_form_wrap .closer a');
+	var box			= jQuery('.single_info .contact_form_wrap');
 	
 	/* ---------------------------------------------- */
 	btnProfile.on('click',function(){
@@ -773,24 +773,24 @@ function directify_fn_isotope(){
 function directify_fn_rating_datas(){
 	"use strict";
 	
-	var rating				= jQuery('.directify_fn_rating');
+	// var rating				= jQuery('.directify_fn_rating');
 	
-	rating.each(function(){
-		var element 		= jQuery(this);
-		var behind			= element.find('.behind');
-		var up				= element.find('.up');
+	// rating.each(function(){
+	// 	var element 		= jQuery(this);
+	// 	var behind			= element.find('.behind');
+	// 	var up				= element.find('.up');
 		
-		var myrate			= element.data('rating');
-		var myrateLength	= 18 * myrate;
-		var myrateUnLength	= 90 - myrateLength;
+	// 	var myrate			= element.data('rating');
+	// 	var myrateLength	= 18 * myrate;
+	// 	var myrateUnLength	= 90 - myrateLength;
 		
-		if(myrate<=5 || myrate==="unknown"){
-			up.css({width:myrateLength+'px'});
-			behind.css({width:myrateUnLength +'px'});
-		}else{
-			up.css({width: 0});
-		}
-	});
+	// 	if(myrate<=5 || myrate==="unknown"){
+	// 		up.css({width:myrateLength+'px'});
+	// 		behind.css({width:myrateUnLength +'px'});
+	// 	}else{
+	// 		up.css({width: 0});
+	// 	}
+	// });
 }
 // -----------------------------------------------------
 // -----------    NICESCROLL FOR INDEX 25    -----------

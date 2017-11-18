@@ -8,6 +8,7 @@ import { CommunicationService } from '../../service/communication.service';
 import { DomainService } from '../../service/domain.service';
 import { PlayListItem } from '../shared/ng2-audio-player/ng2-audio-player.component';
 import { Communication } from '../../model/communication';
+import { SafeResourceUrl } from '@angular/platform-browser/src/security/dom_sanitization_service';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,6 +23,7 @@ export class UserProfileComponent implements OnInit {
   public youtubeVideoUrl: any;
   public playlist: PlayListItem[];
   public communication: Communication = new Communication();
+  public mapsUrl: SafeResourceUrl;
 
   constructor(
     private _userManager: UserManagementService,
@@ -43,12 +45,27 @@ export class UserProfileComponent implements OnInit {
       })
       .subscribe(res => {
         this.profile = res[0];
+        console.log(this.profile);
+        this.fixData(this.profile);
+        this.mapsUrl = this._sanitizer.bypassSecurityTrustResourceUrl(
+          `https://www.google.com/maps/embed/v1/place?key=AIzaSyD5FcofhLUUZRQi-IbPF18sWLlmT3QsytI&q=
+          ${this.profile.name},${this.profile.address}`
+        );
         this.priceBand = this.findPriceRange(res[1]);
         this.youtubeVideoUrl = this._sanitizer.bypassSecurityTrustResourceUrl(
           `https://www.youtube.com/embed/${this.profile.youtube}`
         );
         this.playlist = this.parseMusic();
       });
+  }
+
+  private fixData(profile: any) {
+    profile.feedbackValue = Math.round(profile.feedbackValue * 100) / 100;
+    for (const item of profile.feedbackContainer.counts) {
+      if (item.percentage !== 0) {
+        item.percentage = Math.round(item.percentage);
+      }
+    }
   }
 
   private findPriceRange(priceDomain: any[]): string {
@@ -75,7 +92,8 @@ export class UserProfileComponent implements OnInit {
     this.communication.sentTo = this.userId;
     this.communication.sentFrom = this.userId;
     this.communication.read = false;
-    this.communication.sendDate = new Date().getTime();
+    this.communication.date = Date.parse(this.communication.date);
+    this.communication.sendDate = (new Date()).getTime();
     this._communicationService
       .sendCommunication(this.communication)
       .subscribe(res => {

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RoutingModule } from './routing.module';
 import { ToastyModule, ToastyService } from 'ng2-toasty';
@@ -65,7 +64,6 @@ import { SearchComponent } from './components/search/search.component';
     RoutingModule,
     FormsModule,
     HttpModule,
-    CarouselModule.forRoot(),
     ToastyModule.forRoot(),
     BsModalModule,
     BsDatepickerModule.forRoot(),

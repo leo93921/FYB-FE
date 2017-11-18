@@ -1,37 +1,51 @@
-.item img {
-  max-width: 100%;
-  max-height: 100%;
+.directify_fn_single_wrapper {
+  padding-top: 120px !important;
 }
-.event-date {
-  background-color: #333333;
-  width: 64px;
-  height: 64px;
-  text-decoration: none;
-  text-align: center;
-  color: #fff;
+.single_profile.verified {
+  padding: 1px 0px 0px 0px;
 }
-
-.event-day {
-  margin: 0px;
+.triple_buttons_wrap .btn {
+  width: 50% !important;
+}
+.directify_fn_review_wrapper .all_reviews_wrap .review_single{
   padding: 0px;
-  line-height: 1;
-  font-size: 3em;
 }
-.link-event-date:hover,
-.link-event-date:visited {
-  text-decoration: none;
-  color: #fff;
+.responsive .title_info {
+  margin-top: 40px;
 }
-.btn-engage {
-  margin-bottom: 10px;
+.directify_fn_rating > span {
+  width: 160px
 }
-.feedP {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
+.img-thumb {
+  max-height: 90px;
+  max-width: 90px;
 }
-.feedP rating,
-.feedP span {
-  display: table-cell;
+.directify_fn_single_wrapper.second_single .single_info .photo_box_wrap ul li {
+  height: 90px;
+}
+.as-table {
+  display: table
+}
+.as-table-cell {
+  display: table-cell !important;
   vertical-align: middle;
+}
+.directify_fn_single_wrapper.second_single .single_title.responsive .title_info .title_holder{
+  display: block;
+  min-height: initial;
+}
+.directify_fn_single_wrapper.second_single .single_title .title_info {
+  margin-top: 40px;
+}
+.progress_bar span.number {
+  width: 40px;
+}
+.fa-star-o, .fa-star-half-o, .fa-star {
+  color: #777777;
+}
+.rating-desc, .rating-container {
+  display: inline-block;
+}
+.rating-total-desc {
+  display: block !important;
 }
